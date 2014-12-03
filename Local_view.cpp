@@ -7,13 +7,12 @@ using std::vector;
 using std::cout;
 using std::endl;
 
-const Point default_origin(-10.0, -10.0);
 const double loca_view_scale = 2.0;
 const int loca_view_size = 9;
 
 
 Local_view::Local_view(const string& name):
-	Grid_view(default_origin, loca_view_scale, loca_view_size)
+	Grid_view(Point(), loca_view_scale, loca_view_size)
 {
 	center_object_name = name;
 	// No need to set the origin, location update will do the work

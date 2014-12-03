@@ -17,12 +17,14 @@ const Point default_origin(-10.0, -10.0);
 const double default_scale = 2.0;
 const int default_size = 25;
 
-Grid_view::Grid_view(Point origin_, double scale_, int size_)
-{
-	origin = origin_;
-	scale = scale_;
-	size = size_;
-}
+Grid_view::Grid_view(Point origin_, double scale_, int size_):
+	origin(origin_), scale(scale_), size(size_)
+{}
+
+Grid_view::Grid_view():
+	Grid_view(default_origin, default_scale, default_size)
+{}
+
 void Grid_view::update_location(const string& name, Point location)
 {
 	name_location_map[name] = location;

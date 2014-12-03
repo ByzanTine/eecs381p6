@@ -31,8 +31,11 @@ public:
 	virtual void set_defaults();
 
 protected:
-	// default constructor sets the default size, scale, and origin
+	// Constructor that comming parameter
 	Grid_view(Point origin_, double scale_, int size_); // avoid instance creation
+	// default constructor sets the default size, scale, and origin
+	Grid_view(); 
+	
 	bool get_subscripts(int &ix, int &iy, Point location); // helper function
 	// drawing helpers 
 	// Print the size origin scale 

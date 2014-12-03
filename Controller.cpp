@@ -5,12 +5,11 @@
 #include <cassert>
 #include <algorithm>
 #include "Model.h"
-#include "Views.h"
 
 #include "Map_view.h"
-#include "Local_view.h" // TODO 
-
 #include "View.h"
+#include "View_factory.h"
+
 #include "Agent_factory.h"
 #include "Structure_factory.h"
 #include "Agent.h"
@@ -129,7 +128,7 @@ void Controller::command_open()
 		throw Error("View of that name already open!");
 	// add into map and attach
 	// maintain two container
-	shared_ptr<View> new_View = create_View(view_name);
+	shared_ptr<View> new_View = create_view(view_name);
 	name_View_map.emplace(view_name, new_View);
 	order_View_map.push_back(new_View);
 	Model::get_instance().attach(new_View);
@@ -268,22 +267,6 @@ void Controller::command_train()
 		create_agent(object_name, object_type, Point(x, y)));
 }
 
-
-// View creation helper
-shared_ptr<View> Controller::create_View(string& type)
-{
-	if (type == "map")
-		return make_shared<Map_view>();
-	else if (type == "health")
-		return make_shared<Health_view>();
-	else if (type == "amounts")
-		return make_shared<Amounts_view>();
-	else if (Model::get_instance().is_name_in_use(type)) // find if the object exist 
-		return make_shared<Local_view>(type); // here the type is agent name
-
-	else
-		throw Error("No object of that name!");
-}
 
 // Get the map view through dynamic cast
 shared_ptr<Map_view> Controller::get_map_View()

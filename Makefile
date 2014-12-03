@@ -9,7 +9,7 @@ OBJS += Sim_object.o Structure.o Moving_object.o Agent.o
 OBJS += Farm.o Town_Hall.o
 OBJS += Peasant.o Warrior.o
 OBJS += Soldier.o Archer.o 
-OBJS += Agent_factory.o Structure_factory.o
+OBJS += Agent_factory.o Structure_factory.o View_factory.o
 OBJS += Geometry.o Utility.o
 PROG = proj5exe
 
@@ -80,6 +80,9 @@ Agent_factory.o: Agent_factory.cpp Agent_factory.h Geometry.h Utility.h
 
 Structure_factory.o: Structure_factory.cpp Structure_factory.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Structure_factory.cpp
+
+View_factory.o: View_factory.cpp View_factory.h Utility.h
+	$(CC) $(CFLAGS) View_factory.cpp
 
 Geometry.o: Geometry.cpp Geometry.h
 	$(CC) $(CFLAGS) Geometry.cpp

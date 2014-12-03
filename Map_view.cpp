@@ -5,12 +5,9 @@
 using std::vector;
 using std::string;
 
-const Point default_origin(-10.0, -10.0);
-const double default_scale = 2.0;
-const int default_size = 25;
-const int max_map_size = 30;
+const int max_map_size = 30; // TODO refactor with Grid View
 
-Map_view::Map_view():Grid_view(default_origin, default_scale, default_size)
+Map_view::Map_view():Grid_view()
 {
 	
 }
