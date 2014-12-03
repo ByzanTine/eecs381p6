@@ -1,7 +1,8 @@
 #include "Agent_factory.h"
 
 #include "Peasant.h"
-#include "Warriors.h"
+#include "Soldier.h"
+#include "Archer.h"
 #include "Utility.h"
 
 using std::shared_ptr;

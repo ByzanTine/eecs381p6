@@ -3,10 +3,12 @@ LD = g++
 CFLAGS = -c -g -std=c++11 -pedantic-errors -Wall
 LFLAGS = -g
 
-OBJS = p5_main.o Model.o View.o Controller.o Views.o
+OBJS = p5_main.o Model.o View.o Controller.o 
+OBJS += Grid_view.o Map_view.o Local_view.o Health_view.o Amounts_view.o
 OBJS += Sim_object.o Structure.o Moving_object.o Agent.o
 OBJS += Farm.o Town_Hall.o
-OBJS += Peasant.o Warriors.o
+OBJS += Peasant.o Warrior.o
+OBJS += Soldier.o Archer.o 
 OBJS += Agent_factory.o Structure_factory.o
 OBJS += Geometry.o Utility.o
 PROG = proj5exe
@@ -25,8 +27,20 @@ Model.o: Model.cpp Model.h View.h Sim_object.h Structure.h Agent.h Agent_factory
 View.o: View.cpp View.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) View.cpp
 
-Views.o: Views.cpp View.h Geometry.h Utility.h
-	$(CC) $(CFLAGS) Views.cpp
+Grid_view.o: Grid_view.cpp Grid_view.h View.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Grid_view.cpp
+
+Map_view.o: Map_view.cpp Map_view.h View.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Map_view.cpp
+
+Local_view.o: Local_view.cpp Local_view.h View.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Local_view.cpp
+
+Health_view.o: Health_view.cpp Health_view.h View.h Utility.h
+	$(CC) $(CFLAGS) Health_view.cpp
+
+Amounts_view.o: Amounts_view.cpp View.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Amounts_view.cpp
 
 Controller.o: Controller.cpp Controller.h Model.h View.h Sim_object.h Structure.h Agent.h Agent_factory.h Structure_factory.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Controller.cpp
@@ -49,8 +63,14 @@ Agent.o: Agent.cpp Agent.h Model.h Moving_object.h Sim_object.h Geometry.h Utili
 Peasant.o: Peasant.cpp Peasant.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Peasant.cpp
 
-Warriors.o: Warriors.cpp Warriors.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
-	$(CC) $(CFLAGS) Warriors.cpp
+Warrior.o: Warrior.cpp Warrior.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Warrior.cpp
+
+Archer.o: Archer.cpp Archer.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Archer.cpp
+
+Soldier.o: Soldier.cpp Soldier.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Soldier.cpp
 
 Moving_object.o: Moving_object.cpp Moving_object.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Moving_object.cpp

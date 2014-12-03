@@ -6,6 +6,10 @@
 #include <algorithm>
 #include "Model.h"
 #include "Views.h"
+
+#include "Map_view.h"
+#include "Local_view.h" // TODO 
+
 #include "View.h"
 #include "Agent_factory.h"
 #include "Structure_factory.h"
@@ -276,6 +280,7 @@ shared_ptr<View> Controller::create_View(string& type)
 		return make_shared<Amounts_view>();
 	else if (Model::get_instance().is_name_in_use(type)) // find if the object exist 
 		return make_shared<Local_view>(type); // here the type is agent name
+
 	else
 		throw Error("No object of that name!");
 }

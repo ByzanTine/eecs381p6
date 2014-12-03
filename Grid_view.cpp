@@ -1,24 +1,21 @@
-#include "Views.h"
+#include "Grid_view.h"
 
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
 #include "Geometry.h"
 #include "Utility.h"
+
 using std::cout;
 using std::endl;
 using std::string;
 using std::setw;
 using std::pair;
-using std::vector;
-// prints out the current map
+using std::vector;	
 
 const Point default_origin(-10.0, -10.0);
 const double default_scale = 2.0;
 const int default_size = 25;
-const double loca_view_scale = 2.0;
-const int loca_view_size = 9;
-const int max_map_size = 30;
 
 Grid_view::Grid_view(Point origin_, double scale_, int size_)
 {
@@ -26,13 +23,13 @@ Grid_view::Grid_view(Point origin_, double scale_, int size_)
 	scale = scale_;
 	size = size_;
 }
-void Grid_view::update_location(const std::string& name, Point location)
+void Grid_view::update_location(const string& name, Point location)
 {
 	name_location_map[name] = location;
 }
 
 // Remove the name and its location; no error if the name is not present.
-void Grid_view::update_remove(const std::string& name)
+void Grid_view::update_remove(const string& name)
 {
 	if (name_location_map.find(name) != name_location_map.end())
 		name_location_map.erase(name);
@@ -171,122 +168,3 @@ void Grid_view::callibrate_origin(Point location)
 	double offset = (size/2.)*scale;
 	origin = Point(location.x - offset, location.y - offset);
 }
-
-
-
-
-/* class declarations for Health_view */
-/* =========================================================*/
-
-Map_view::Map_view():Grid_view(default_origin, default_scale, default_size)
-{
-
-}
-
-void Map_view::draw()
-{
-
-	print_grid_header();
-	// Init the display map
-	vector< vector<string> >  display_matrix
-		(max_map_size, vector<string>(max_map_size, ". "));
-	
-	// Assign the values first
-	fill_display_matrix(display_matrix);
-	
-	show_outsiders();
-	
-	draw_grid(display_matrix);
-}
-/* =========================================================*/
-
-/* class declarations for Health_view */
-/* =========================================================*/
-// constructor
-Local_view::Local_view(const string& name):
-	Grid_view(default_origin, loca_view_scale, loca_view_size)
-{
-	center_object_name = name;
-	// No need to set the origin, location update will do the work
-}
-
-// override to also update the center
-void Local_view::update_location(const string& name, Point location)
-{
-	Grid_view::update_location(name, location);
-
-	if (name == center_object_name)
-		callibrate_origin(location);
-}
-
-
-// prints out the current map
-void Local_view::draw()
-{
-	cout << "Local view for: " << center_object_name << endl;
-	// Init the display map
-	vector< vector<string> >  display_matrix
-		(max_map_size, vector<string>(max_map_size, ". "));
-	
-	// Assign the values first
-	fill_display_matrix(display_matrix);
-		
-	draw_grid(display_matrix);
-}
-/* =========================================================*/
-
-/* class definitions for Health_view */
-/* =========================================================*/
-
-void Health_view::update_health(const std::string& name, double health)
-{
-	health_status[name] = health;
-}
-
-// Remove the name and its location; 
-void Health_view::update_remove(const std::string& name)
-{
-	if (health_status.find(name) != health_status.end())
-		health_status.erase(name);
-}	
-
-
-void Health_view::draw()
-{
-	cout << "Current " << "Health" << ":" << endl;
-	cout << "--------------" << endl;
-	for_each(health_status.begin(), health_status.end(), 
-		[](const pair<string, double>& content_pair){
-			cout << content_pair.first << ": " << content_pair.second << endl;});
-	cout << "--------------" << endl;
-}
-/* =========================================================*/
-
-
-
-
-/* class definitions for Amounts view */
-/* =========================================================*/
-// Save the supplied food_carry data for future use in a draw() call
-void Amounts_view::update_food_carry(const std::string& name, double food_carry)
-{
-	carry_status[name] = food_carry;
-}	
-
-// Remove the name and its location; 
-void Amounts_view::update_remove(const std::string& name)
-{
-	if (carry_status.find(name) != carry_status.end())
-		carry_status.erase(name);
-}	
-
-void Amounts_view::draw()
-{
-	cout << "Current " << "Amounts" << ":" << endl;
-	cout << "--------------" << endl;
-	for_each(carry_status.begin(), carry_status.end(), 
-		[](const pair<string, double>& content_pair){
-			cout << content_pair.first << ": " << content_pair.second << endl;});
-	cout << "--------------" << endl;
-}
-/* =========================================================*/
