@@ -19,13 +19,8 @@ using std::shared_ptr;
 // const double init_attack_range = 2.0;
 Soldier::Soldier(const std::string& name_, Point location_):Warrior(name_, location_, 2, 2.0) // only will be used once
 {
-	// cout << "Soldier " << get_name() << " constructed" << endl;
+	
 
-}
-
-Soldier::~Soldier()
-{
-	// cout << "Soldier " << get_name() << " destructed" << endl;
 }
 
 // update implements Soldier behavior

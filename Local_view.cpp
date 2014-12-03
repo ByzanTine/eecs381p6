@@ -8,11 +8,8 @@ using std::cout;
 using std::endl;
 
 const Point default_origin(-10.0, -10.0);
-const double default_scale = 2.0;
-const int default_size = 25;
 const double loca_view_scale = 2.0;
 const int loca_view_size = 9;
-const int max_map_size = 30;
 
 
 Local_view::Local_view(const string& name):
@@ -38,7 +35,7 @@ void Local_view::draw()
 	cout << "Local view for: " << center_object_name << endl;
 	// Init the display map
 	vector< vector<string> >  display_matrix
-		(max_map_size, vector<string>(max_map_size, ". "));
+		(loca_view_size, vector<string>(loca_view_size, ". "));
 	
 	// Assign the values first
 	fill_display_matrix(display_matrix);

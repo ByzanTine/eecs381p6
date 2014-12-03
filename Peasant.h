@@ -17,8 +17,6 @@ public:
 	// initialize with zero amount being carried
 	Peasant(const std::string& name_, Point location_);
 
-	~Peasant();
-
 	// implement Peasant behavior
 	void update() override;
 	

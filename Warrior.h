@@ -6,8 +6,6 @@
 class Warrior: public Agent
 {
 public:
-	// virtual destructor since it's base class
-	virtual ~Warrior();
 	// empty update 
 	void update() override{};
 	// start_attacking is the same protocol

@@ -9,11 +9,6 @@ using std::shared_ptr;
 
 /* class definitions for Warrior */
 /* =========================================================*/
-// destructor 
-Warrior::~Warrior()
-{
-	// cout << "Warrior " << get_name() << " destructed" << endl;
-}
 // start_attacking is the same protocol
 void Warrior::start_attacking(std::shared_ptr<Agent> target_ptr)
 {

@@ -18,7 +18,6 @@ class Soldier: public Warrior
 public:
 	
 	Soldier(const std::string& name_, Point location_);
-	~Soldier();
 	
 	// update implements Soldier behavior
 	void update() override;

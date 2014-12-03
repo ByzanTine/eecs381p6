@@ -10,7 +10,6 @@ class Archer: public Warrior
 public:
 	
 	Archer(const std::string& name_, Point location_);
-	~Archer();
 	
 	// update implements Soldier behavior
 	void update() override;

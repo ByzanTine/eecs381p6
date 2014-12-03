@@ -16,13 +16,7 @@ Peasant::Peasant(const std::string& name_, Point location_):Agent(name_, locatio
 {
 	food_carrying = 0.;
 	peasant_state = Peasant_state::Not_working;
-	// cout << "Peasant " << get_name()  << " constructed" << endl;
 
-}
-
-Peasant::~Peasant()
-{
-	// cout << "Peasant " << get_name() << " destructed" << endl;
 }
 
 // implement Peasant behavior

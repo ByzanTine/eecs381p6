@@ -23,7 +23,7 @@ class Agent : public Sim_object, public std::enable_shared_from_this<Agent>
 public:
 
 	// declare destructor
-	virtual ~Agent();
+	~Agent();
 	// return true if this agent is Alive
 	bool is_alive() const
 		{return alive_state == Alive_state::Alive;}

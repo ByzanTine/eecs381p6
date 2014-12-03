@@ -11,13 +11,8 @@ using std::endl;
 using std::shared_ptr;
 Archer::Archer(const std::string& name_, Point location_):Warrior(name_, location_, 1, 6.0) // strength first
 {
-	// cout << "Soldier " << get_name() << " constructed" << endl;
+	
 
-}
-
-Archer::~Archer()
-{
-	// cout << "Soldier " << get_name() << " destructed" << endl;
 }
 
 // update implements Soldier behavior
