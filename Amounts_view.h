@@ -9,22 +9,18 @@ Include local object view, health view and amount view
 #include <map>
 #include <vector>
 #include <string>
-#include "View.h"
+#include "List_view.h"
 
 
 
 /* class declarations for Amounts_view */
 /* =========================================================*/
-class Amounts_view : public View {
+class Amounts_view : public List_view {
 public: 
 	// Save the supplied food_carry data for future use in a draw() call
 	void update_food_carry(const std::string& name, double food_carry) override;
-	// update the view if a object is gone
-	void update_remove(const std::string& name) override;
+	// leaf draw
 	void draw() override;
-private:
-	using status_t = std::map<std::string, double>;
-	status_t carry_status;
 
 };
 

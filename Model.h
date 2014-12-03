@@ -35,8 +35,6 @@ class View; // temp
 class Model {
 public:
 	static Model& get_instance();
-	// destroy all objects
-	~Model();
 
 	// return the current time
 	int get_time() {return time;}
@@ -93,7 +91,8 @@ private:
 	// an int member variable to store the simulated time
 	// private constructor to make singleton
 	Model();
-	
+	// destroy all objects
+	~Model();
 	int time;
 
 	struct name_compare

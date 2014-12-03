@@ -4,7 +4,8 @@ CFLAGS = -c -g -std=c++11 -pedantic-errors -Wall
 LFLAGS = -g
 
 OBJS = p5_main.o Model.o View.o Controller.o 
-OBJS += Grid_view.o Map_view.o Local_view.o Health_view.o Amounts_view.o
+OBJS += Grid_view.o List_view.o
+OBJS += Map_view.o Local_view.o Health_view.o Amounts_view.o
 OBJS += Sim_object.o Structure.o Moving_object.o Agent.o
 OBJS += Farm.o Town_Hall.o
 OBJS += Peasant.o Warrior.o
@@ -35,6 +36,9 @@ Map_view.o: Map_view.cpp Map_view.h View.h Geometry.h Utility.h
 
 Local_view.o: Local_view.cpp Local_view.h View.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Local_view.cpp
+
+List_view.o: List_view.cpp List_view.h View.h Utility.h
+	$(CC) $(CFLAGS) List_view.cpp
 
 Health_view.o: Health_view.cpp Health_view.h View.h Utility.h
 	$(CC) $(CFLAGS) Health_view.cpp
