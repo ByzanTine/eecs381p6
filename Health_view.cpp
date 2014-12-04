@@ -1,9 +1,7 @@
 #include "Health_view.h"
 #include <iostream>
-#include <algorithm>
 using std::cout;
 using std::endl;
-using std::pair;
 using std::string;
 
 

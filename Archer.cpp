@@ -10,10 +10,7 @@ using std::cout;
 using std::endl;
 using std::shared_ptr;
 Archer::Archer(const std::string& name_, Point location_):Warrior(name_, location_, 1, 6.0) // strength first
-{
-	
-
-}
+{}
 
 // update implements Soldier behavior
 void Archer::update()

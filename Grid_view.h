@@ -41,6 +41,7 @@ protected:
 	// Print the size origin scale 
 	void print_grid_header();
 	// fill the display matrix for drawing
+	// draw all the things in location_map
 	void fill_display_matrix(std::vector< std::vector<std::string> >& display_matrix);
 	// show outsiders
 	void show_outsiders();

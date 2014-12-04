@@ -46,7 +46,8 @@ public:
 
 	// prints out the current map
 	virtual void draw() = 0; // you always need to override draw 
-		
+	
+	virtual ~View();
 
 };
 #endif

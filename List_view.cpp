@@ -7,9 +7,6 @@ using std::endl;
 using std::pair;
 using std::string;
 
-
-
-
 // Remove the name and its location; 
 void List_view::update_remove(const std::string& name)
 {
