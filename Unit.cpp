@@ -24,10 +24,10 @@ void Unit::set_parent(shared_ptr<Unit> parent_)
 
 void Unit::add_component(std::shared_ptr<Unit>)
 {
-	throw (Error("I'm not a group!"));
+	throw Error("I'm not a group!");
 }
 
 void Unit::remove_component(std::shared_ptr<Unit>)
 {
-	throw (Error("I'm not a group!"));
+	throw Error("I'm not a group!");
 }

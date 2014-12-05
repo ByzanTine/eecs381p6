@@ -48,11 +48,11 @@ private:
 	void command_status();
 	void command_build();
 	void command_train();
-
-	void command_group();
-	void command_add();
-	void command_remove();
-	void command_disband();
+	// set of group commands 
+	void command_create_group();
+	void command_add_to_group();
+	void command_remove_from_group();
+	void command_disband_group();
 
 	// Views
 	using view_map_name_t = std::map<std::string, std::shared_ptr<View>>;

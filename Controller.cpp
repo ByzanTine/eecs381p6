@@ -33,30 +33,31 @@ int read_int();
 double read_double();
 string read_object_name();
 
-Controller::Controller() :
-agent_commands
+Controller::Controller()
 {
-	{ "move", &Controller::command_move },
-	{ "work", &Controller::command_work },
-	{ "attack", &Controller::command_attack },
-	{ "stop", &Controller::command_stop }
-},
-general_commands
-{
-	{ "status", &Controller::command_status },
-	{ "show", &Controller::command_show },
-	{ "go", &Controller::command_go },
-	{ "build", &Controller::command_build },
-	{ "train", &Controller::command_train }
-},
-group_commands
-{
-	{ "group", &Controller::command_group },
-	{ "add", &Controller::command_add },
-	{ "remove", &Controller::command_remove },
-	{ "disband", &Controller::command_disband },
-},
-view_commands
+	agent_commands = 
+	{
+		{ "move", &Controller::command_move },
+		{ "work", &Controller::command_work },
+		{ "attack", &Controller::command_attack },
+		{ "stop", &Controller::command_stop }
+	};
+	general_commands =
+	{
+		{ "status", &Controller::command_status },
+		{ "show", &Controller::command_show },
+		{ "go", &Controller::command_go },
+		{ "build", &Controller::command_build },
+		{ "train", &Controller::command_train }
+	};
+	group_commands = 
+	{
+		{ "group", &Controller::command_create_group },
+		{ "add", &Controller::command_add_to_group },
+		{ "remove", &Controller::command_remove_from_group },
+		{ "disband", &Controller::command_disband_group },
+	};
+	view_commands = 
 	{
 		{ "open", &Controller::command_open },
 		{ "close", &Controller::command_close },
@@ -64,7 +65,8 @@ view_commands
 		{ "size", &Controller::command_size },
 		{ "zoom", &Controller::command_zoom },
 		{ "pan", &Controller::command_pan }
-} {}
+	};
+}
 
 // create View object, run the program by acccepting user commands, then destroy View object
 void Controller::run()
@@ -103,7 +105,7 @@ void Controller::run()
 			{
 				(this->*view_commands[first_word])();
 			}
-			else if (group_commands.find(first_word) != view_commands.end())
+			else if (group_commands.find(first_word) != group_commands.end())
 			{
 				(this->*group_commands[first_word])();
 			}
@@ -274,12 +276,12 @@ void Controller::command_train()
 		create_agent(object_name, object_type, Point(x, y)));
 }
 
-void Controller::command_group() 
+void Controller::command_create_group() 
 {
 	string group_name = read_object_name();
 	Model::get_instance().add_group(group_name, make_shared<Group>());
 }
-void Controller::command_add() 
+void Controller::command_add_to_group() 
 {
 	string group_name, unit_name;
 	cin >> group_name;
@@ -294,7 +296,7 @@ void Controller::command_add()
 		throw (Error("No unit with that name!"));
 	group_ptr->add_component(unit_ptr);
 }
-void Controller::command_remove() 
+void Controller::command_remove_from_group() 
 {
 	string group_name, unit_name;
 	cin >> group_name;
@@ -309,7 +311,7 @@ void Controller::command_remove()
 		throw (Error("No unit with that name!"));
 	group_ptr->remove_component(unit_ptr);
 }
-void Controller::command_disband() 
+void Controller::command_disband_group() 
 {
 	string group_name;
 	cin >> group_name;

@@ -5,7 +5,7 @@
 
 class Structure;
 class Agent;
-
+class Point;
 class Unit : public std::enable_shared_from_this<Unit> 
 {
 public:

@@ -11,7 +11,7 @@ using std::cerr;
 using std::endl;
 using std::shared_ptr;
 using std::string;
-using std::static_pointer_cast;
+using std::dynamic_pointer_cast;
 const int init_health = 5;
 const double init_speed = 5.0;
 
@@ -158,7 +158,7 @@ void Agent::lose_health(int attack_strength)
 		alive_state = Alive_state::Dead;
 		mov_object.stop_moving();
 		Model::get_instance().notify_gone(get_name());
-		Model::get_instance().remove_agent(static_pointer_cast<Agent>(shared_from_this()));
+		Model::get_instance().remove_agent(dynamic_pointer_cast<Agent>(shared_from_this()));
 	}
 	else
 	{
