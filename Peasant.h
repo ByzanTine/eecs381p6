@@ -34,6 +34,16 @@ public:
 	void describe() const override;
 	// ask model to update the state 
 	void broadcast_current_state() override;
+
+	bool can_attack() override 
+	{
+		return false;
+	}
+
+	bool can_work() override 
+	{
+		return true;
+	}
 private:
 	double food_carrying;
 	enum class Peasant_state {Not_working, Inbound, Collecting, Outbound, Depositing};

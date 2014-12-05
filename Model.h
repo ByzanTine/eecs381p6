@@ -29,6 +29,7 @@ Notice how only the Standard Library headers need to be included - reduced coupl
 class Structure; 
 class Agent;
 class Point;
+class Group;
 
 class View; // temp
 
@@ -61,6 +62,10 @@ public:
 	// find the nearest agent 
 	std::shared_ptr<Agent> get_nearest_agent_ptr(const std::string& name) const;
 	// tell all objects to describe themselves to the console
+	bool is_group_present(const std::string& name) const;
+	void add_group(const std::string& name, std::shared_ptr<Group> group_ptr);
+	void remove_group(const std::string& name);
+	std::shared_ptr<Group> get_group_ptr(const std::string& name) const;
 	void describe() const;
 	// increment the time, and tell all objects to update themselves
 	void update();	
@@ -108,6 +113,7 @@ private:
 	 
 	std::map<std::string, std::shared_ptr<Agent> >  agent_pool;
 	std::map<std::string, std::shared_ptr<Structure> > structure_pool;
+	std::map<std::string, std::shared_ptr<Group> > group_pool;
 	// container of Views
 	std::set<std::shared_ptr<View>> views;
 	

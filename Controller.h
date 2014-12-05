@@ -26,6 +26,7 @@ private:
 
 	command_map_t view_commands;
 	command_map_t general_commands;
+	command_map_t group_commands;
 	std::map<std::string, agent_command_function> agent_commands;
 
 	// Command set
@@ -47,6 +48,11 @@ private:
 	void command_status();
 	void command_build();
 	void command_train();
+
+	void command_group();
+	void command_add();
+	void command_remove();
+	void command_disband();
 
 	// Views
 	using view_map_name_t = std::map<std::string, std::shared_ptr<View>>;

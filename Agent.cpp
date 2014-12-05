@@ -11,6 +11,7 @@ using std::cerr;
 using std::endl;
 using std::shared_ptr;
 using std::string;
+using std::static_pointer_cast;
 const int init_health = 5;
 const double init_speed = 5.0;
 
@@ -137,7 +138,7 @@ void Agent::start_attacking(shared_ptr<Agent>)
 
 // Make this an abstract class by making the constructor protected to prevent direct creation.
 // create with initial health is 5, speed is 5, state is Alive
-Agent::Agent(const std::string& name_, Point location_):Sim_object(name_)
+Agent::Agent(const std::string& name_, Point location_): Sim_object(name_)
 {
 	health = init_health;
 	alive_state = Alive_state::Alive;
@@ -157,7 +158,7 @@ void Agent::lose_health(int attack_strength)
 		alive_state = Alive_state::Dead;
 		mov_object.stop_moving();
 		Model::get_instance().notify_gone(get_name());
-		Model::get_instance().remove_agent(shared_from_this());
+		Model::get_instance().remove_agent(static_pointer_cast<Agent>(shared_from_this()));
 	}
 	else
 	{
