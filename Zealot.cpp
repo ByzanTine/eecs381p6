@@ -7,6 +7,7 @@
 using std::cout;
 using std::endl;
 using std::shared_ptr;
+using std::static_pointer_cast;
 
 const int init_attack_strength = 2;
 const double init_attack_range = 2.0;
@@ -43,7 +44,7 @@ void Zealot::update()
 		return;
 	}
 	cout << get_name() << ": Clang!" << endl;
-	shared_target->take_hit(get_attack_strength(), shared_from_this());
+	shared_target->take_hit(get_attack_strength(), static_pointer_cast<Agent>(shared_from_this()));
 	if (!shared_target->is_alive())
 	{
 		cout << get_name() << ": I triumph!" << endl;

@@ -10,7 +10,7 @@ public:
 	// tell this group to start moving to location destination_
 	void move_to(Point destination_) override;
 
-	// tell this Agent to stop its activity
+	// tell this group to stop its activity
 	void stop() override;
 
 	void start_working(std::shared_ptr<Structure>, std::shared_ptr<Structure>) override;

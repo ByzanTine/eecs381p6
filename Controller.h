@@ -26,6 +26,7 @@ private:
 
 	command_map_t view_commands;
 	command_map_t general_commands;
+	command_map_t group_commands;
 	std::map<std::string, agent_command_function> agent_commands;
 
 	// Command set

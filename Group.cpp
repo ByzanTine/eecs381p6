@@ -1,4 +1,5 @@
 #include "Group.h"
+#include "Utility.h"
 #include <algorithm>
 #include <functional>
 using std::shared_ptr;
@@ -15,25 +16,16 @@ void Group::move_to(Point destination_)
 
 void Group::stop() 
 {
-	for_each(members.begin(), members.end(), [](const shared_ptr<Unit> member_ptr) 
-	{
-		try 
-		{
-			member_ptr->stop();
-		}
-		catch (Error &e) {}
-	});
+	for_each(members.begin(), members.end(),
+		bind(&Unit::stop, _1));
 }
 
 void Group::start_working(shared_ptr<Structure> source_, shared_ptr<Structure> destination_) 
 {
 	for_each(members.begin(), members.end(), [&](const shared_ptr<Unit> member_ptr) 
 	{
-		try 
-		{
+		if (member_ptr->can_work())
 			member_ptr->start_working(source_, destination_);
-		}
-		catch (Error &e) {}
 	});
 }
 
@@ -41,11 +33,8 @@ void Group::start_attacking(shared_ptr<Agent> target)
 {
 	for_each(members.begin(), members.end(), [&](const shared_ptr<Unit> member_ptr) 
 	{
-		try 
-		{
+		if (member_ptr->can_attack())
 			member_ptr->start_attacking(target);
-		}
-		catch (Error &e) {}
 	});
 }
 

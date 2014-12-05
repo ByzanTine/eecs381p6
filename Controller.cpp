@@ -33,40 +33,38 @@ int read_int();
 double read_double();
 string read_object_name();
 
-Controller::Controller()
+Controller::Controller() :
+agent_commands
 {
-	 
-	agent_commands  = 
+	{ "move", &Controller::command_move },
+	{ "work", &Controller::command_work },
+	{ "attack", &Controller::command_attack },
+	{ "stop", &Controller::command_stop }
+},
+general_commands
+{
+	{ "status", &Controller::command_status },
+	{ "show", &Controller::command_show },
+	{ "go", &Controller::command_go },
+	{ "build", &Controller::command_build },
+	{ "train", &Controller::command_train }
+},
+group_commands
+{
+	{ "group", &Controller::command_group },
+	{ "add", &Controller::command_add },
+	{ "remove", &Controller::command_remove },
+	{ "disband", &Controller::command_disband },
+},
+view_commands
 	{
-		{"move", &Controller::command_move},
-		{"work", &Controller::command_work},
-		{"attack", &Controller::command_attack},
-		{"stop", &Controller::command_stop}
-	};
-
-	general_commands = 
-	{
-		{"status", &Controller::command_status},
-		{"show", &Controller::command_show},
-		{"go", &Controller::command_go},
-		{"build", &Controller::command_build},
-		{"train", &Controller::command_train},
-		{ "group", &Controller::command_group },
-		{ "add", &Controller::command_add },
-		{ "remove", &Controller::command_remove },
-		{ "disband", &Controller::command_disband },
-	};
-	
-	view_commands = 
-	{
-		{"open", &Controller::command_open},
-		{"close", &Controller::command_close},
-		{"default", &Controller::command_default},
-		{"size", &Controller::command_size},
-		{"zoom", &Controller::command_zoom},
-		{"pan", &Controller::command_pan}
-	};
-}
+		{ "open", &Controller::command_open },
+		{ "close", &Controller::command_close },
+		{ "default", &Controller::command_default },
+		{ "size", &Controller::command_size },
+		{ "zoom", &Controller::command_zoom },
+		{ "pan", &Controller::command_pan }
+} {}
 
 // create View object, run the program by acccepting user commands, then destroy View object
 void Controller::run()
@@ -104,6 +102,10 @@ void Controller::run()
 			else if (view_commands.find(first_word) != view_commands.end())
 			{
 				(this->*view_commands[first_word])();
+			}
+			else if (group_commands.find(first_word) != view_commands.end())
+			{
+				(this->*group_commands[first_word])();
 			}
 			else
 			{

@@ -9,6 +9,7 @@
 using std::cout;
 using std::endl;
 using std::shared_ptr;
+using std::static_pointer_cast;
 
 Archer::Archer(const std::string& name_, Point location_):Warrior(name_, location_, 1, 6.0) // strength first
 {}
@@ -37,7 +38,7 @@ void Archer::update()
 		else
 		{
 			cout << get_name() << ": Twang!" << endl;
-			shared_target->take_hit(get_attack_strength(), shared_from_this());
+			shared_target->take_hit(get_attack_strength(), static_pointer_cast<Agent>(shared_from_this()));
 			if (!shared_target->is_alive())
 			{
 				cout << get_name() << ": I triumph!" << endl;
