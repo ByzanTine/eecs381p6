@@ -8,7 +8,8 @@
 class Structure;
 class Agent;
 
-class Unit : public std::enable_shared_from_this<Unit> {
+class Unit : public std::enable_shared_from_this<Unit> 
+{
 public:
 
 	// tell this Agent to start moving to location destination_
@@ -24,11 +25,13 @@ public:
 	// Throws exception that an Agent cannot attack.
 	virtual void start_attacking(std::shared_ptr<Agent>) = 0;
 
-	virtual void add_component(std::shared_ptr<Unit>) {
+	virtual void add_component(std::shared_ptr<Unit>) 
+	{
 		throw (Error("I'm not a group!"));
 	}
 
-	virtual void remove_component(std::shared_ptr<Unit>) {
+	virtual void remove_component(std::shared_ptr<Unit>) 
+	{
 		throw (Error("I'm not a group!"));
 	}
 	void set_parent(std::shared_ptr<Unit>);

@@ -272,45 +272,43 @@ void Controller::command_train()
 		create_agent(object_name, object_type, Point(x, y)));
 }
 
-void Controller::command_group() {
+void Controller::command_group() 
+{
 	string group_name = read_object_name();
 	Model::get_instance().add_group(group_name, make_shared<Group>());
 }
-void Controller::command_add() {
+void Controller::command_add() 
+{
 	string group_name, unit_name;
 	cin >> group_name;
 	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
 	cin >> unit_name;
 	shared_ptr<Unit> unit_ptr;
-	if (Model::get_instance().is_group_present(unit_name)) {
+	if (Model::get_instance().is_group_present(unit_name))
 		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
-	}
-	else if (Model::get_instance().is_agent_present(unit_name)) {
+	else if (Model::get_instance().is_agent_present(unit_name))
 		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
-	}
-	else {
+	else
 		throw (Error("No unit with that name!"));
-	}
 	group_ptr->add_component(unit_ptr);
 }
-void Controller::command_remove() {
+void Controller::command_remove() 
+{
 	string group_name, unit_name;
 	cin >> group_name;
 	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
 	cin >> unit_name;
 	shared_ptr<Unit> unit_ptr;
-	if (Model::get_instance().is_group_present(unit_name)) {
+	if (Model::get_instance().is_group_present(unit_name))
 		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
-	}
-	else if (Model::get_instance().is_agent_present(unit_name)) {
+	else if (Model::get_instance().is_agent_present(unit_name))
 		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
-	}
-	else {
+	else
 		throw (Error("No unit with that name!"));
-	}
 	group_ptr->remove_component(unit_ptr);
 }
-void Controller::command_disband() {
+void Controller::command_disband() 
+{
 	string group_name;
 	cin >> group_name;
 	Model::get_instance().remove_group(group_name);
