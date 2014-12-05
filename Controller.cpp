@@ -103,7 +103,7 @@ void Controller::run()
 			{
 				(this->*view_commands[first_word])();
 			}
-			else if (group_commands.find(first_word) != view_commands.end())
+			else if (group_commands.find(first_word) != group_commands.end())
 			{
 				(this->*group_commands[first_word])();
 			}
