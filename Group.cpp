@@ -5,6 +5,7 @@ using std::shared_ptr;
 using std::for_each;
 using std::bind;
 using namespace std::placeholders;
+using std::string;
 
 void Group::move_to(Point destination_) {
 	for_each(members.begin(), members.end(), 
@@ -55,5 +56,5 @@ void Group::remove_component(shared_ptr<Unit> unit_ptr) {
 		return;
 	}
 	members.erase(member_it);
-	unit_ptr->check_unset_parent(shared_from_this());
+	unit_ptr->unset_parent();
 }

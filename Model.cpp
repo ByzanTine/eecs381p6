@@ -7,12 +7,15 @@
 #include "Geometry.h"
 #include "Structure.h"
 #include "Agent.h"
+#include "Group.h"
 #include "Utility.h"
+#include <functional>
 using std::bind;
 using std::pair;
 using std::string;
 using std::shared_ptr;
 using namespace std::placeholders;
+using std::for_each;
 
 
 Model& Model::get_instance()
@@ -227,5 +230,30 @@ void Model::notify_gone(const string& name)
 {
 	for_each(views.begin(), views.end(), 
 		bind(&View::update_remove, _1, name));
+}
+
+bool Model::is_group_present(const string& name) const {
+	return group_pool.find(name) != group_pool.end();
+}
+
+void Model::add_group(const string& name, shared_ptr<Group> group_ptr) {
+	group_pool[name] = group_ptr;
+}
+
+void Model::remove_group(const std::string& name) {
+	auto group_it = group_pool.find(name);
+	if (group_it == group_pool.end()) {
+		return;
+	}
+	group_it->second->set_parent(shared_ptr<Unit>());
+	group_pool.erase(group_it);
+}
+
+shared_ptr<Group> Model::get_group_ptr(const string& name) const {
+	auto group_it = group_pool.find(name);
+	if (group_it == group_pool.end()) {
+		throw (Error("Group not found!"));
+	}
+	return group_it->second;
 }
 	

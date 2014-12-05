@@ -10,7 +10,7 @@ it becomes dead, and finally disappearing.
 #define AGENT_H
 
 #include <memory>
-
+#include "Sim_object.h"
 #include "Unit.h"
 #include "Moving_object.h"
 
@@ -18,7 +18,7 @@ it becomes dead, and finally disappearing.
 class Structure;
 
 // Inherit from Sim_object and Moving Object
-class Agent : public Unit
+class Agent : public Sim_object, public Unit
 {
 public:
 

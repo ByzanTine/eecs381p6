@@ -6,6 +6,7 @@
 
 class Group : public Unit {
 public:
+
 	// tell this group to start moving to location destination_
 	void move_to(Point destination_) override;
 

@@ -8,11 +8,8 @@
 class Structure;
 class Agent;
 
-class Unit : public Sim_object, public std::enable_shared_from_this<Unit> {
+class Unit : public std::enable_shared_from_this<Unit> {
 public:
-	Point get_location() const override {
-		throw (Error("Multiple locations!"));
-	}
 
 	// tell this Agent to start moving to location destination_
 	virtual void move_to(Point destination_) = 0;
@@ -35,13 +32,13 @@ public:
 		throw (Error("I'm not a group!"));
 	}
 	
-	void check_unset_parent(std::shared_ptr<Unit>);
+	void unset_parent();
 	void set_parent(std::shared_ptr<Unit>);
 protected:
 	bool is_offspring_of(std::shared_ptr<Unit>);
 private :
 
-	std::shared_ptr<Unit> parent;
+	std::weak_ptr<Unit> parent;
 };
 
 #endif
