@@ -11,14 +11,14 @@ it becomes dead, and finally disappearing.
 
 #include <memory>
 
-#include "Sim_object.h"
+#include "Unit.h"
 #include "Moving_object.h"
 
 
 class Structure;
 
 // Inherit from Sim_object and Moving Object
-class Agent : public Sim_object, public std::enable_shared_from_this<Agent>
+class Agent : public Unit
 {
 public:
 
@@ -35,10 +35,10 @@ public:
 	bool is_moving() const;
 	
 	// tell this Agent to start moving to location destination_
-	virtual void move_to(Point destination_);
+	void move_to(Point destination_) override;
 
 	// tell this Agent to stop its activity
-	virtual void stop();
+	void stop() override;
 
 	// Tell this Agent to accept a hit from an attack of a specified strength
 	// The attacking Agent identifies itself with its this pointer.
@@ -57,10 +57,10 @@ public:
 
 	/* Fat Interface for derived classes */
 	// Throws exception that an Agent cannot work.
-	virtual void start_working(std::shared_ptr<Structure>, std::shared_ptr<Structure>);
+	void start_working(std::shared_ptr<Structure>, std::shared_ptr<Structure>) override;
 
 	// Throws exception that an Agent cannot attack.
-	virtual void start_attacking(std::shared_ptr<Agent>);
+	void start_attacking(std::shared_ptr<Agent>) override;
 
 protected:
  	// Make this an abstract class by making the constructor protected to prevent direct creation.

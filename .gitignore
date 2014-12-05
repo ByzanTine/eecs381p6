@@ -26,3 +26,5 @@
 *.exe
 *.out
 *.app
+eecs381p6.vcxproj
+eecs381p6.vcxproj.filters
