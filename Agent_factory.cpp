@@ -3,6 +3,7 @@
 #include "Peasant.h"
 #include "Soldier.h"
 #include "Archer.h"
+#include "Zealot.h"
 #include "Utility.h"
 
 using std::shared_ptr;
@@ -16,6 +17,8 @@ shared_ptr<Agent> create_agent(const std::string& name, const std::string& type,
 		return make_shared<Soldier>(name, location);
 	else if (type == "Archer")
 		return make_shared<Archer>(name, location);
+	else if (type == "Zealot")
+		return make_shared<Zealot>(name, location);
 	else
 		throw Error("Trying to create agent of unknown type!");
 }
