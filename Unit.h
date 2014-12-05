@@ -31,8 +31,6 @@ public:
 	virtual void remove_component(std::shared_ptr<Unit>) {
 		throw (Error("I'm not a group!"));
 	}
-	
-	void unset_parent();
 	void set_parent(std::shared_ptr<Unit>);
 protected:
 	bool is_offspring_of(std::shared_ptr<Unit>);

@@ -4,8 +4,9 @@
 #include <string>
 #include <cassert>
 #include <algorithm>
+#include <functional>
 #include "Model.h"
-
+#include "Group.h"
 #include "Map_view.h"
 #include "View.h"
 #include "View_factory.h"
@@ -49,7 +50,11 @@ Controller::Controller()
 		{"show", &Controller::command_show},
 		{"go", &Controller::command_go},
 		{"build", &Controller::command_build},
-		{"train", &Controller::command_train}
+		{"train", &Controller::command_train},
+		{ "group", &Controller::command_group },
+		{ "add", &Controller::command_add },
+		{ "remove", &Controller::command_remove },
+		{ "disband", &Controller::command_disband },
 	};
 	
 	view_commands = 
@@ -265,6 +270,50 @@ void Controller::command_train()
 	double y = read_double();
 	Model::get_instance().add_agent(
 		create_agent(object_name, object_type, Point(x, y)));
+}
+
+void Controller::command_group() {
+	string group_name = read_object_name();
+	Model::get_instance().add_group(group_name, make_shared<Group>());
+}
+void Controller::command_add() {
+	string group_name, unit_name;
+	cin >> group_name;
+	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
+	cin >> unit_name;
+	shared_ptr<Unit> unit_ptr;
+	if (Model::get_instance().is_group_present(unit_name)) {
+		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
+	}
+	else if (Model::get_instance().is_agent_present(unit_name)) {
+		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
+	}
+	else {
+		throw (Error("No unit with that name!"));
+	}
+	group_ptr->add_component(unit_ptr);
+}
+void Controller::command_remove() {
+	string group_name, unit_name;
+	cin >> group_name;
+	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
+	cin >> unit_name;
+	shared_ptr<Unit> unit_ptr;
+	if (Model::get_instance().is_group_present(unit_name)) {
+		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
+	}
+	else if (Model::get_instance().is_agent_present(unit_name)) {
+		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
+	}
+	else {
+		throw (Error("No unit with that name!"));
+	}
+	group_ptr->remove_component(unit_ptr);
+}
+void Controller::command_disband() {
+	string group_name;
+	cin >> group_name;
+	Model::get_instance().remove_group(group_name);
 }
 
 

@@ -56,5 +56,5 @@ void Group::remove_component(shared_ptr<Unit> unit_ptr) {
 		return;
 	}
 	members.erase(member_it);
-	unit_ptr->unset_parent();
+	unit_ptr->set_parent(shared_ptr<Unit>());
 }

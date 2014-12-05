@@ -14,10 +14,6 @@ bool Unit::is_offspring_of(shared_ptr<Unit> other) {
 	return false;
 }
 
-void Unit::unset_parent() {
-	parent.reset();
-}
-
 void Unit::set_parent(shared_ptr<Unit> parent_) {
 	if (!parent.expired()) {
 		parent.lock()->remove_component(shared_from_this());

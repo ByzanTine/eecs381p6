@@ -48,6 +48,11 @@ private:
 	void command_build();
 	void command_train();
 
+	void command_group();
+	void command_add();
+	void command_remove();
+	void command_disband();
+
 	// Views
 	using view_map_name_t = std::map<std::string, std::shared_ptr<View>>;
 	view_map_name_t name_View_map;

@@ -78,7 +78,8 @@ Model::~Model()
 // return true if the name matches the name of an existing agent or structure
 bool Model::is_name_in_use(const string& name) const
 {
-	return sim_object_pool.find(name) != sim_object_pool.end();
+	return sim_object_pool.find(name) != sim_object_pool.end()
+		|| group_pool.find(name) != group_pool.end();
 }
 
 // is there a structure with this name?
