@@ -3,24 +3,24 @@ LD = g++
 CFLAGS = -c -g -std=c++11 -pedantic-errors -Wall
 LFLAGS = -g
 
-OBJS = p5_main.o Model.o View.o Controller.o 
+OBJS = p6_main.o Model.o View.o Controller.o 
 OBJS += Grid_view.o List_view.o
 OBJS += Map_view.o Local_view.o Health_view.o Amounts_view.o
 OBJS += Sim_object.o Structure.o Moving_object.o Agent.o
 OBJS += Farm.o Town_Hall.o
 OBJS += Peasant.o Warrior.o
-OBJS += Soldier.o Archer.o 
+OBJS += Soldier.o Archer.o Zealot.o
 OBJS += Agent_factory.o Structure_factory.o View_factory.o
 OBJS += Geometry.o Utility.o
-PROG = proj5exe
+PROG = p6exe
 
 default: $(PROG)
 
 $(PROG): $(OBJS)
 	$(LD) $(LFLAGS) $(OBJS) -o $(PROG)
 
-p5_main.o: p5_main.cpp Model.h Controller.h
-	$(CC) $(CFLAGS) p5_main.cpp
+p6_main.o: p6_main.cpp Model.h Controller.h
+	$(CC) $(CFLAGS) p6_main.cpp
 
 Model.o: Model.cpp Model.h View.h Sim_object.h Structure.h Agent.h Agent_factory.h Structure_factory.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Model.cpp
@@ -76,6 +76,9 @@ Archer.o: Archer.cpp Archer.h Agent.h Moving_object.h Sim_object.h Geometry.h Ut
 Soldier.o: Soldier.cpp Soldier.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Soldier.cpp
 
+Zealot.o: Zealot.cpp Zealot.h Agent.h Moving_object.h Sim_object.h Geometry.h Utility.h
+	$(CC) $(CFLAGS) Zealot.cpp
+
 Moving_object.o: Moving_object.cpp Moving_object.h Geometry.h Utility.h
 	$(CC) $(CFLAGS) Moving_object.cpp
 
@@ -105,19 +108,19 @@ play: Sim_object.h play.cpp
 	g++ Structure.cpp play.cpp Geometry.cpp -o play
 .PHONY: sample_test
 sample_test:
-	./proj5exe < testcase/states_in.txt > testcase/states_out_temp.txt
+	./p6exe < testcase/states_in.txt > testcase/states_out_temp.txt
 	diff testcase/states_out_temp.txt testcase/states_out.txt -s
-	./proj5exe < testcase/fight_noshow_in.txt > testcase/fight_noshow_out_temp.txt
+	./p6exe < testcase/fight_noshow_in.txt > testcase/fight_noshow_out_temp.txt
 	diff testcase/fight_noshow_out_temp.txt testcase/fight_noshow_out.txt -s
-	./proj5exe < testcase/workviolence_noshow_in.txt > testcase/workviolence_noshow_out_temp.txt
+	./p6exe < testcase/workviolence_noshow_in.txt > testcase/workviolence_noshow_out_temp.txt
 	diff testcase/workviolence_noshow_out_temp.txt testcase/workviolence_noshow_out.txt -s
-	./proj5exe < testcase/name_validity_in.txt > testcase/name_validity_out_temp.txt
+	./p6exe < testcase/name_validity_in.txt > testcase/name_validity_out_temp.txt
 	diff testcase/name_validity_out_temp.txt testcase/name_validity_out.txt -s
-	./proj5exe < testcase/views_in.txt > testcase/views_out_temp.txt
+	./p6exe < testcase/views_in.txt > testcase/views_out_temp.txt
 	diff testcase/views_out_temp.txt testcase/views_out.txt -s
-	./proj5exe < testcase/fight_in.txt > testcase/fight_out_temp.txt
+	./p6exe < testcase/fight_in.txt > testcase/fight_out_temp.txt
 	diff testcase/fight_out_temp.txt testcase/fight_out.txt -s
-	./proj5exe < testcase/workviolence_in.txt > testcase/workviolence_out_temp.txt
+	./p6exe < testcase/workviolence_in.txt > testcase/workviolence_out_temp.txt
 	diff testcase/workviolence_out_temp.txt testcase/workviolence_out.txt -s
-	./proj5exe < testcase/new_features_in.txt > testcase/new_features_out_temp.txt
+	./p6exe < testcase/new_features_in.txt > testcase/new_features_out_temp.txt
 	diff testcase/new_features_out_temp.txt testcase/new_features_out.txt -s
