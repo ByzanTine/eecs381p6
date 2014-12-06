@@ -11,8 +11,7 @@ with the user.
 #include <memory>
 class Unit;
 class View;
-class Map_view;
-
+class Grid_view;
 class Controller {
 public:	
 	Controller();
@@ -48,11 +47,11 @@ private:
 	void command_status();
 	void command_build();
 	void command_train();
-
-	void command_group();
-	void command_add();
-	void command_remove();
-	void command_disband();
+	// set of group commands 
+	void command_create_group();
+	void command_add_to_group();
+	void command_remove_from_group();
+	void command_disband_group();
 
 	// Views
 	using view_map_name_t = std::map<std::string, std::shared_ptr<View>>;
@@ -67,7 +66,8 @@ private:
 	std::shared_ptr<View> create_View(std::string& type);
 
 	// Map View accessor 
-	std::shared_ptr<Map_view> get_map_View();
+	// helper accessor for the map or agriculture view
+	std::shared_ptr<Grid_view> get_map_or_agri_view();
 
 };
 #endif

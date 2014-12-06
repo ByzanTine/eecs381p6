@@ -7,7 +7,7 @@
 #include <functional>
 #include "Model.h"
 #include "Group.h"
-#include "Map_view.h"
+#include "Grid_view.h"
 #include "View.h"
 #include "View_factory.h"
 
@@ -33,30 +33,31 @@ int read_int();
 double read_double();
 string read_object_name();
 
-Controller::Controller() :
-agent_commands
+Controller::Controller()
 {
-	{ "move", &Controller::command_move },
-	{ "work", &Controller::command_work },
-	{ "attack", &Controller::command_attack },
-	{ "stop", &Controller::command_stop }
-},
-general_commands
-{
-	{ "status", &Controller::command_status },
-	{ "show", &Controller::command_show },
-	{ "go", &Controller::command_go },
-	{ "build", &Controller::command_build },
-	{ "train", &Controller::command_train }
-},
-group_commands
-{
-	{ "group", &Controller::command_group },
-	{ "add", &Controller::command_add },
-	{ "remove", &Controller::command_remove },
-	{ "disband", &Controller::command_disband },
-},
-view_commands
+	agent_commands = 
+	{
+		{ "move", &Controller::command_move },
+		{ "work", &Controller::command_work },
+		{ "attack", &Controller::command_attack },
+		{ "stop", &Controller::command_stop }
+	};
+	general_commands =
+	{
+		{ "status", &Controller::command_status },
+		{ "show", &Controller::command_show },
+		{ "go", &Controller::command_go },
+		{ "build", &Controller::command_build },
+		{ "train", &Controller::command_train }
+	};
+	group_commands = 
+	{
+		{ "group", &Controller::command_create_group },
+		{ "add", &Controller::command_add_to_group },
+		{ "remove", &Controller::command_remove_from_group },
+		{ "disband", &Controller::command_disband_group },
+	};
+	view_commands = 
 	{
 		{ "open", &Controller::command_open },
 		{ "close", &Controller::command_close },
@@ -64,7 +65,8 @@ view_commands
 		{ "size", &Controller::command_size },
 		{ "zoom", &Controller::command_zoom },
 		{ "pan", &Controller::command_pan }
-} {}
+	};
+}
 
 // create View object, run the program by acccepting user commands, then destroy View object
 void Controller::run()
@@ -169,37 +171,39 @@ void Controller::command_close()
 	
 }
 
-
+// only works for map and agriculture
+// throw exception otherwise
 void Controller::command_default()
 {
-	shared_ptr<Map_view> map_view = get_map_View();
+	
+	shared_ptr<Grid_view> grid_view = get_map_or_agri_view();
 
-	map_view->set_defaults();
+	grid_view->set_defaults();
 }
 
 void Controller::command_size()
 {
-	shared_ptr<Map_view> map_view = get_map_View();
+	shared_ptr<Grid_view> grid_view = get_map_or_agri_view();
 	int map_size = read_int();
 
-	map_view->set_size(map_size);
+	grid_view->set_size(map_size);
 }
 
 void Controller::command_zoom()
 {
 
-	shared_ptr<Map_view> map_view = get_map_View();
+	shared_ptr<Grid_view> grid_view = get_map_or_agri_view();
 	
 	double map_scale = read_double();
-	map_view->set_scale(map_scale);
+	grid_view->set_scale(map_scale);
 }
 
 void Controller::command_pan()
 {
-	shared_ptr<Map_view> map_view = get_map_View();
+	shared_ptr<Grid_view> grid_view = get_map_or_agri_view();
 	double x = read_double();
 	double y = read_double();
-	map_view->set_origin(Point(x, y));
+	grid_view->set_origin(Point(x, y));
 }
 
 void Controller::command_move(shared_ptr<Unit> agent_ptr)
@@ -281,12 +285,12 @@ void Controller::command_train()
 		create_agent(object_name, object_type, Point(x, y)));
 }
 
-void Controller::command_group() 
+void Controller::command_create_group() 
 {
 	string group_name = read_object_name();
 	Model::get_instance().add_group(group_name, make_shared<Group>(group_name));
 }
-void Controller::command_add() 
+void Controller::command_add_to_group() 
 {
 	string group_name, unit_name;
 	cin >> group_name;
@@ -301,7 +305,7 @@ void Controller::command_add()
 		throw (Error("No unit with that name!"));
 	group_ptr->add_component(unit_ptr);
 }
-void Controller::command_remove() 
+void Controller::command_remove_from_group() 
 {
 	string group_name, unit_name;
 	cin >> group_name;
@@ -316,7 +320,7 @@ void Controller::command_remove()
 		throw (Error("No unit with that name!"));
 	group_ptr->remove_component(unit_ptr);
 }
-void Controller::command_disband() 
+void Controller::command_disband_group() 
 {
 	string group_name;
 	cin >> group_name;
@@ -324,14 +328,25 @@ void Controller::command_disband()
 }
 
 
-// Get the map view through dynamic cast
-shared_ptr<Map_view> Controller::get_map_View()
+
+// a helper function to obtain map or agri view
+shared_ptr<Grid_view> Controller::get_map_or_agri_view()
 {
-	auto map_view = name_View_map.find("map");
-	if (map_view == name_View_map.end())
-		throw Error("No map view is open!");
-	return dynamic_pointer_cast<Map_view>(map_view->second);
+	string view_name;
+	cin >> view_name;
+	if (view_name == "map" || view_name == "agriculture")
+	{
+		auto grid_view = name_View_map.find(view_name);
+		if (grid_view == name_View_map.end())
+			throw Error("No " + view_name + " view is open!");
+		return dynamic_pointer_cast<Grid_view>(grid_view->second);
+	}
+	else
+	{
+		throw Error("Not a map or agriculture View");
+	}
 }
+
 
 
 int read_int()

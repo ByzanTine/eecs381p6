@@ -20,13 +20,17 @@ class Zealot: public Warrior
 public:
 	
 	Zealot(const std::string& name_, Point location_);
-	
+	// Zealot won't refuse a far away target
+	void start_attacking(std::shared_ptr<Agent> target_ptr) override;
 	// update implements Soldier behavior
 	void update() override;
 		
 	// output information about the current state
 	void describe() const override;
-
+private:
+	// attack nearest target if there is one
+	// change state to non-attack and discard any target
+	void attack_nearest_target();
 };
 
 
