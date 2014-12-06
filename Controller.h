@@ -11,8 +11,7 @@ with the user.
 #include <memory>
 class Agent;
 class View;
-class Map_view;
-
+class Grid_view;
 class Controller {
 public:	
 	Controller();
@@ -67,7 +66,8 @@ private:
 	std::shared_ptr<View> create_View(std::string& type);
 
 	// Map View accessor 
-	std::shared_ptr<Map_view> get_map_View();
+	// helper accessor for the map or agriculture view
+	std::shared_ptr<Grid_view> get_map_or_agri_view();
 
 };
 #endif

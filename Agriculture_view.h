@@ -4,6 +4,7 @@
 #include "Grid_view.h"
 #include <set>
 #include <map>
+// Agriculture is also able to change it's size, scale, origin as the map does
 class Agriculture_view : public Grid_view {
 public:
 	// default constructor sets the default size, scale, and origin
