@@ -8,7 +8,7 @@ class Warrior: public Agent
 public:
 	// empty update 
 	void update() override{};
-	// start_attacking is the same protocol
+	// start_attacking a agent
 	void start_attacking(std::shared_ptr<Agent> target_ptr) override;
 	// Override Stop for the warriors, since they all don't stop
 	void stop() override;
@@ -16,8 +16,6 @@ public:
 	void describe() const override;
 
 protected:
-	// Derived class want to know the state that they can be in
-	enum class Warrior_state {Attacking, Not_Attacking};
 
 	// Make this an abstract class by making the constructor protected to prevent direct creation.
 	Warrior(const std::string& name_, Point location_, int attack_strength_, int attack_range_);
@@ -40,8 +38,9 @@ private:
 	double attack_range;
 
 	std::weak_ptr<Agent> target;
-	
+	enum class Warrior_state {Attacking, Not_Attacking};
 	Warrior_state warrior_state;
+
 
 };
 

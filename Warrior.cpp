@@ -7,9 +7,6 @@ using std::cout;
 using std::endl;
 using std::shared_ptr;
 
-/* class definitions for Warrior */
-/* =========================================================*/
-// start_attacking is the same protocol
 void Warrior::start_attacking(std::shared_ptr<Agent> target_ptr)
 {
 	if (target_ptr == shared_from_this()) //maybe use get()==this?
