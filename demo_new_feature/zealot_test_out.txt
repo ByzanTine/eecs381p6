@@ -1,0 +1,499 @@
+
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: Zealot BladeMaster at (-10.00, -10.00)
+   Health is 5
+   Stopped
+   Not attacking
+Soldier Bug at (15.00, 20.00)
+   Health is 5
+   Stopped
+   Not attacking
+Archer Iriel at (20.00, 38.00)
+   Health is 5
+   Stopped
+   Not attacking
+Peasant Merry at (0.00, 25.00)
+   Health is 5
+   Stopped
+   Carrying 0.00
+Town_Hall Paduca at (30.00, 30.00)
+   Contains 0.00
+Peasant Pippin at (5.00, 10.00)
+   Health is 5
+   Stopped
+   Carrying 0.00
+Farm Rivendale at (10.00, 10.00)
+   Food available: 50.00
+Town_Hall Shire at (20.00, 20.00)
+   Contains 0.00
+Farm Sunnybrook at (0.00, 30.00)
+   Food available: 50.00
+Soldier Zug at (20.00, 30.00)
+   Health is 5
+   Stopped
+   Not attacking
+
+Time 0: Enter command: BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+Farm Rivendale now has 52.00
+Farm Sunnybrook now has 52.00
+
+Time 1: Enter command: BladeMaster: step...
+Farm Rivendale now has 54.00
+Farm Sunnybrook now has 54.00
+
+Time 2: Enter command: BladeMaster: step...
+Farm Rivendale now has 56.00
+Farm Sunnybrook now has 56.00
+
+Time 3: Enter command: BladeMaster: step...
+Farm Rivendale now has 58.00
+Farm Sunnybrook now has 58.00
+
+Time 4: Enter command: BladeMaster: step...
+Farm Rivendale now has 60.00
+Farm Sunnybrook now has 60.00
+
+Time 5: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+Pippin: Ouch!
+Farm Rivendale now has 62.00
+Farm Sunnybrook now has 62.00
+
+Time 6: Enter command: BladeMaster: Clang!
+Pippin: Ouch!
+Farm Rivendale now has 64.00
+Farm Sunnybrook now has 64.00
+
+Time 7: Enter command: BladeMaster: Clang!
+Pippin: Arrggh!
+BladeMaster: I triumph!
+BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+Farm Rivendale now has 66.00
+Farm Sunnybrook now has 66.00
+
+Time 8: Enter command: Display size: 25, scale: 2.00, origin: (-10.00, -10.00)
+  38 . . . . . . . . . . . . . . . Ir. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  32 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Su. . . . . . . . . Zu. . . . Pa. . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  26 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Me. . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  20 . . . . . . . . . . . . Bu. . Sh. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  14 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . Bl. . Ri. . . . . . . . . . . . . . 
+   8 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+   2 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  -4 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+ -10 . . . . . . . . . . . . . . . . . . . . . . . . . 
+   -10    -4     2     8    14    20    26    32    38
+Current Health:
+--------------
+BladeMaster: 5.00
+Bug: 5.00
+Iriel: 5.00
+Merry: 5.00
+Zug: 5.00
+--------------
+
+Time 8: Enter command: BladeMaster: step...
+Farm Rivendale now has 68.00
+Farm Sunnybrook now has 68.00
+
+Time 9: Enter command: BladeMaster: step...
+Farm Rivendale now has 70.00
+Farm Sunnybrook now has 70.00
+
+Time 10: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+Bug: Ouch!
+Bug: I'm attacking!
+Bug: Clang!
+BladeMaster: Ouch!
+Farm Rivendale now has 72.00
+Farm Sunnybrook now has 72.00
+
+Time 11: Enter command: BladeMaster: Clang!
+Bug: Ouch!
+Bug: Clang!
+BladeMaster: Ouch!
+Farm Rivendale now has 74.00
+Farm Sunnybrook now has 74.00
+
+Time 12: Enter command: BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+
+Time 12: Enter command: Zug: I'm on the way
+
+Time 12: Enter command: BladeMaster: step...
+Bug: Target is now out of range
+Farm Rivendale now has 76.00
+Farm Sunnybrook now has 76.00
+Zug: step...
+
+Time 13: Enter command: BladeMaster: step...
+Iriel: I'm attacking!
+Farm Rivendale now has 78.00
+Farm Sunnybrook now has 78.00
+Zug: I'm there!
+
+Time 14: Enter command: BladeMaster: I'm there!
+BladeMaster: Target is out of range, chase it down!
+BladeMaster: I'm on the way
+Iriel: Twang!
+Zug: Ouch!
+Zug: I'm attacking!
+Farm Rivendale now has 80.00
+Farm Sunnybrook now has 80.00
+Zug: Clang!
+Iriel: Ouch!
+Iriel: I'm going to run away to Paduca
+Iriel: I'm on the way
+
+Time 15: Enter command: BladeMaster: step...
+Iriel: step...
+Iriel: Twang!
+Zug: Ouch!
+Farm Rivendale now has 82.00
+Farm Sunnybrook now has 82.00
+Zug: Target is now out of range
+
+Time 16: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+Zug: Ouch!
+Zug: I'm attacking!
+Iriel: step...
+Iriel: Target is now out of range
+Farm Rivendale now has 84.00
+Farm Sunnybrook now has 84.00
+Zug: Clang!
+BladeMaster: Arrggh!
+Zug: I triumph!
+
+Time 17: Enter command: Display size: 25, scale: 2.00, origin: (-10.00, -10.00)
+  38 . . . . . . . . . . . . . . . Zu. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  32 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Su. . . . . . . . . . . . Ir. Pa. . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  26 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Me. . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  20 . . . . . . . . . . . . Bu. . Sh. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  14 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . Ri. . . . . . . . . . . . . . 
+   8 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+   2 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  -4 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+ -10 . . . . . . . . . . . . . . . . . . . . . . . . . 
+   -10    -4     2     8    14    20    26    32    38
+Current Health:
+--------------
+Bug: 1.00
+Iriel: 3.00
+Merry: 5.00
+Zug: 1.00
+--------------
+
+Time 17: Enter command: 
+Time 17: Enter command: BladeMaster: I'm attacking!
+Iriel: I'm there!
+Farm Rivendale now has 86.00
+Farm Sunnybrook now has 86.00
+
+Time 18: Enter command: BladeMaster: Clang!
+Zug: Arrggh!
+BladeMaster: I triumph!
+BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+Farm Rivendale now has 88.00
+Farm Sunnybrook now has 88.00
+
+Time 19: Enter command: BladeMaster: step...
+Farm Rivendale now has 90.00
+Farm Sunnybrook now has 90.00
+
+Time 20: Enter command: BladeMaster: step...
+Iriel: I'm attacking!
+Farm Rivendale now has 92.00
+Farm Sunnybrook now has 92.00
+
+Time 21: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+Iriel: Ouch!
+Iriel: I'm going to run away to Paduca
+Iriel: I'm already there
+Iriel: Twang!
+BladeMaster: Ouch!
+Farm Rivendale now has 94.00
+Farm Sunnybrook now has 94.00
+
+Time 22: Enter command: BladeMaster: Clang!
+Iriel: Arrggh!
+BladeMaster: I triumph!
+BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+Farm Rivendale now has 96.00
+Farm Sunnybrook now has 96.00
+
+Time 23: Enter command: BladeMaster: step...
+Farm Rivendale now has 98.00
+Farm Sunnybrook now has 98.00
+
+Time 24: Enter command: Display size: 25, scale: 2.00, origin: (-10.00, -10.00)
+  38 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  32 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Su. . . . . . . . . . . . . . Pa. . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  26 . . . . . . . . . . . . . . . . . Bl. . . . . . . 
+     . . . . . Me. . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  20 . . . . . . . . . . . . Bu. . Sh. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  14 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . Ri. . . . . . . . . . . . . . 
+   8 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+   2 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  -4 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+ -10 . . . . . . . . . . . . . . . . . . . . . . . . . 
+   -10    -4     2     8    14    20    26    32    38
+Current Health:
+--------------
+BladeMaster: 4.00
+Bug: 1.00
+Merry: 5.00
+--------------
+
+Time 24: Enter command: BladeMaster: step...
+Farm Rivendale now has 100.00
+Farm Sunnybrook now has 100.00
+
+Time 25: Enter command: BladeMaster: step...
+Farm Rivendale now has 102.00
+Farm Sunnybrook now has 102.00
+
+Time 26: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+Bug: Arrggh!
+BladeMaster: I triumph!
+BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+Farm Rivendale now has 104.00
+Farm Sunnybrook now has 104.00
+
+Time 27: Enter command: BladeMaster: step...
+Farm Rivendale now has 106.00
+Farm Sunnybrook now has 106.00
+
+Time 28: Enter command: BladeMaster: step...
+Farm Rivendale now has 108.00
+Farm Sunnybrook now has 108.00
+
+Time 29: Enter command: BladeMaster: step...
+Farm Rivendale now has 110.00
+Farm Sunnybrook now has 110.00
+
+Time 30: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+Merry: Ouch!
+Farm Rivendale now has 112.00
+Farm Sunnybrook now has 112.00
+
+Time 31: Enter command: Display size: 25, scale: 2.00, origin: (-10.00, -10.00)
+  38 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  32 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Su. . . . . . . . . . . . . . Pa. . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  26 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . * . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  20 . . . . . . . . . . . . . . . Sh. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  14 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . Ri. . . . . . . . . . . . . . 
+   8 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+   2 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  -4 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+ -10 . . . . . . . . . . . . . . . . . . . . . . . . . 
+   -10    -4     2     8    14    20    26    32    38
+Current Health:
+--------------
+BladeMaster: 4.00
+Merry: 3.00
+--------------
+
+Time 31: Enter command: BladeMaster: Clang!
+Merry: Ouch!
+Farm Rivendale now has 114.00
+Farm Sunnybrook now has 114.00
+
+Time 32: Enter command: BladeMaster: Clang!
+Merry: Arrggh!
+BladeMaster: I triumph!
+Farm Rivendale now has 116.00
+Farm Sunnybrook now has 116.00
+
+Time 33: Enter command: Farm Rivendale now has 118.00
+Farm Sunnybrook now has 118.00
+
+Time 34: Enter command: Farm Rivendale now has 120.00
+Farm Sunnybrook now has 120.00
+
+Time 35: Enter command: Farm Rivendale now has 122.00
+Farm Sunnybrook now has 122.00
+
+Time 36: Enter command: 
+Time 36: Enter command: Display size: 25, scale: 2.00, origin: (-10.00, -10.00)
+  38 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  32 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Su. . . . . . . . . . . . . . Pa. . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  26 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Bl. . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  20 . . . . . . Th. . . . . . . . Sh. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  14 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . Ri. . . . . . . . . . . . . . 
+   8 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+   2 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  -4 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+ -10 . . . . . . . . . . . . . . . . . . . . . . . . . 
+   -10    -4     2     8    14    20    26    32    38
+Current Health:
+--------------
+BladeMaster: 4.00
+TheEnd: 5.00
+--------------
+
+Time 36: Enter command: BladeMaster: Target is not in range, I am chasing!
+BladeMaster: I'm on the way
+Farm Rivendale now has 124.00
+Farm Sunnybrook now has 124.00
+TheEnd: Target is not in range, I am chasing!
+TheEnd: I'm on the way
+
+Time 37: Enter command: BladeMaster: step...
+Farm Rivendale now has 126.00
+Farm Sunnybrook now has 126.00
+TheEnd: step...
+
+Time 38: Enter command: BladeMaster: I'm there!
+BladeMaster: Target is out of range, chase it down!
+BladeMaster: I'm on the way
+Farm Rivendale now has 128.00
+Farm Sunnybrook now has 128.00
+TheEnd: I'm there!
+TheEnd: Target is out of range, chase it down!
+TheEnd: I'm on the way
+
+Time 39: Enter command: Display size: 25, scale: 2.00, origin: (-10.00, -10.00)
+  38 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  32 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Su. . . . . . . . . . . . . . Pa. . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  26 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . Th. . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  20 . . . . . . Bl. . . . . . . . Sh. . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  14 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . Ri. . . . . . . . . . . . . . 
+   8 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+   2 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+  -4 . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+     . . . . . . . . . . . . . . . . . . . . . . . . . 
+ -10 . . . . . . . . . . . . . . . . . . . . . . . . . 
+   -10    -4     2     8    14    20    26    32    38
+Current Health:
+--------------
+BladeMaster: 4.00
+TheEnd: 5.00
+--------------
+
+Time 39: Enter command: BladeMaster: step...
+Farm Rivendale now has 130.00
+Farm Sunnybrook now has 130.00
+TheEnd: step...
+
+Time 40: Enter command: BladeMaster: I'm there!
+BladeMaster: Target is out of range, chase it down!
+BladeMaster: I'm on the way
+Farm Rivendale now has 132.00
+Farm Sunnybrook now has 132.00
+TheEnd: I'm there!
+TheEnd: Target is out of range, chase it down!
+TheEnd: I'm on the way
+
+Time 41: Enter command: BladeMaster: I'm there!
+BladeMaster: Clang!
+TheEnd: Ouch!
+Farm Rivendale now has 134.00
+Farm Sunnybrook now has 134.00
+TheEnd: step...
+
+Time 42: Enter command: Done

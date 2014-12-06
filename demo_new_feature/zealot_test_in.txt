@@ -1,0 +1,23 @@
+open map
+open health
+train BladeMaster Zealot -10 -10
+status
+go go go go go go go go
+show
+go go go go
+BladeMaster attack Zug
+Zug move 20 38
+go go go go go
+show
+train BladeMaster Zealot 20 36
+go go go go go go go
+show
+go go go go go go go
+show
+go go go go go
+train TheEnd Zealot 2 20
+show
+go go go
+show
+go go go
+quit
