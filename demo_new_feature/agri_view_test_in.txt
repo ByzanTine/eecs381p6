@@ -1,0 +1,22 @@
+pan Iriel
+pan agriculture 5 5 
+open agriculture 
+zoom agriculture 4
+size agriculture 29
+default agriculture 
+open agriculture
+open map
+show
+close map
+build Happy Farm -5 -5 show
+train Tragedy Peasant 26 38 show
+go go go go go go
+show
+Pippin move -5 -5 
+go show
+go show
+Zug move 20 38
+go go go go go go go
+open map
+show
+quit
