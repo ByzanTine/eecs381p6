@@ -5,6 +5,7 @@
 
 class Structure;
 class Agent;
+class Point;
 
 class Unit : public std::enable_shared_from_this<Unit> 
 {
@@ -24,16 +25,6 @@ public:
 	virtual void add_component(std::shared_ptr<Unit>);
 
 	virtual void remove_component(std::shared_ptr<Unit>);
-
-	virtual bool can_attack()
-	{
-		return true;
-	}
-
-	virtual bool can_work()
-	{
-		return false;
-	}
 
 	void set_parent(std::shared_ptr<Unit>);
 protected:

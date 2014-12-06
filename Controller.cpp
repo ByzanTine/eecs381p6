@@ -82,17 +82,24 @@ void Controller::run()
 				cout << "Done" << endl;
 				break;
 			}
-			else if (Model::get_instance().is_agent_present(first_word)) // true if agent exist
+			shared_ptr<Unit> tmp_unit;
+			if (Model::get_instance().is_agent_present(first_word)) // true if agent exist
 			{
-				shared_ptr<Agent> tmp_agent = Model::get_instance().get_agent_ptr(first_word); // noexcept
-				assert(tmp_agent->is_alive());
-	
+				tmp_unit = Model::get_instance().get_agent_ptr(first_word); // noexcept
+			}
+			else if (Model::get_instance().is_group_present(first_word))
+			{
+				tmp_unit = Model::get_instance().get_group_ptr(first_word); // noexcept
+			}
+			if (tmp_unit)
+			{
 				string action;
 				cin >> action;
 				if (agent_commands.find(action) != agent_commands.end())
-					(this->*agent_commands[action])(tmp_agent);
+					(this->*agent_commands[action])(tmp_unit);
 				else
 					throw Error("Unrecognized command!");
+				continue;
 				
 			}
 			else if (general_commands.find(first_word) != general_commands.end())
@@ -195,7 +202,7 @@ void Controller::command_pan()
 	map_view->set_origin(Point(x, y));
 }
 
-void Controller::command_move(shared_ptr<Agent> agent_ptr)
+void Controller::command_move(shared_ptr<Unit> agent_ptr)
 {
 
 	double x = read_double();
@@ -204,7 +211,7 @@ void Controller::command_move(shared_ptr<Agent> agent_ptr)
 	agent_ptr->move_to(Point(x, y));
 
 }
-void Controller::command_work(shared_ptr<Agent> agent_ptr)
+void Controller::command_work(shared_ptr<Unit> agent_ptr)
 {
 
 	string source;
@@ -218,7 +225,7 @@ void Controller::command_work(shared_ptr<Agent> agent_ptr)
 	agent_ptr->start_working(source_structure, dest_structure);
 }
 
-void Controller::command_attack(shared_ptr<Agent> agent_ptr)
+void Controller::command_attack(shared_ptr<Unit> agent_ptr)
 {
 	string target_name;
 	cin >> target_name;
@@ -226,7 +233,7 @@ void Controller::command_attack(shared_ptr<Agent> agent_ptr)
 	agent_ptr->start_attacking(target_agent);
 }
 
-void Controller::command_stop(shared_ptr<Agent> agent_ptr)
+void Controller::command_stop(shared_ptr<Unit> agent_ptr)
 {
 	agent_ptr->stop();
 }
@@ -277,7 +284,7 @@ void Controller::command_train()
 void Controller::command_group() 
 {
 	string group_name = read_object_name();
-	Model::get_instance().add_group(group_name, make_shared<Group>());
+	Model::get_instance().add_group(group_name, make_shared<Group>(group_name));
 }
 void Controller::command_add() 
 {

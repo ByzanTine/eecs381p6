@@ -9,7 +9,7 @@ with the user.
 #include <map>
 #include <vector>
 #include <memory>
-class Agent;
+class Unit;
 class View;
 class Map_view;
 
@@ -21,7 +21,7 @@ public:
 	void run();
 private:
 	typedef void (Controller::*general_command_function)(); // got model as global
-	typedef void (Controller::*agent_command_function)(std::shared_ptr<Agent> agent_ptr);
+	typedef void (Controller::*agent_command_function)(std::shared_ptr<Unit> agent_ptr);
 	using command_map_t = std::map<std::string, general_command_function>;
 
 	command_map_t view_commands;
@@ -38,10 +38,10 @@ private:
 	void command_zoom();
 	void command_pan();
 	// Agent commands
-	void command_move(std::shared_ptr<Agent> agent_ptr);
-	void command_work(std::shared_ptr<Agent> agent_ptr);
-	void command_attack(std::shared_ptr<Agent> agent_ptr);
-	void command_stop(std::shared_ptr<Agent> agent_ptr);
+	void command_move(std::shared_ptr<Unit> agent_ptr);
+	void command_work(std::shared_ptr<Unit> agent_ptr);
+	void command_attack(std::shared_ptr<Unit> agent_ptr);
+	void command_stop(std::shared_ptr<Unit> agent_ptr);
 	// General commands
 	void command_go();
 	void command_show();

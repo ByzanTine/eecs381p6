@@ -3,9 +3,11 @@
 
 #include "Unit.h"
 #include <set>
+#include <string>
 
 class Group : public Unit {
 public:
+	Group(std::string);
 
 	// tell this group to start moving to location destination_
 	void move_to(Point destination_) override;
@@ -22,6 +24,7 @@ public:
 	void remove_component(std::shared_ptr<Unit>) override;
 private:
 	std::set<std::shared_ptr<Unit> > members;
+	std::string name;
 };
 
 #endif
