@@ -26,6 +26,7 @@ using std::shared_ptr;
 using std::make_shared;
 using std::mem_fn;
 using std::dynamic_pointer_cast;
+
 /* refractored error message */
 const char* invalid_object_name_msg = "Invalid name for new object!";
 /* internal helpers */

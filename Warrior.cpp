@@ -6,8 +6,9 @@
 using std::cout;
 using std::endl;
 using std::shared_ptr;
+using std::string;
 
-void Warrior::start_attacking(std::shared_ptr<Agent> target_ptr)
+void Warrior::start_attacking(shared_ptr<Agent> target_ptr)
 {
 	if (target_ptr == shared_from_this()) //maybe use get()==this?
 		throw Error(get_name() + ": I cannot attack myself!");
@@ -48,7 +49,7 @@ void Warrior::describe() const
 }
 
 // Make this an abstract class by making the constructor protected to prevent direct creation.
-Warrior::Warrior(const std::string& name_, Point location_, int attack_strength_, int attack_range_):Agent(name_, location_)
+Warrior::Warrior(const string& name_, Point location_, int attack_strength_, int attack_range_):Agent(name_, location_)
 {
 	// cout << "Warrior " << get_name() << " constructed" << endl;
 	warrior_state = Warrior_state::Not_Attacking;
@@ -62,7 +63,7 @@ void Warrior::go_peace()
 	target.reset();
 }
 // a derived class specific interface to transfer to the attacking state and assign target_ptr
-void Warrior::go_war(std::shared_ptr<Agent> target_ptr)
+void Warrior::go_war(shared_ptr<Agent> target_ptr)
 {	
 	warrior_state = Warrior_state::Attacking;
 	target = target_ptr;
@@ -73,7 +74,7 @@ bool Warrior::is_attacking()
 	return warrior_state == Warrior_state::Attacking;
 }
 // return a shared ptr by the weak ptr, may return nullptr.
-std::shared_ptr<Agent> Warrior::get_target_ptr()
+shared_ptr<Agent> Warrior::get_target_ptr()
 {
 	return target.lock();
 }

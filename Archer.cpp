@@ -8,10 +8,11 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 using std::shared_ptr;
 using std::dynamic_pointer_cast;
 
-Archer::Archer(const std::string& name_, Point location_):Warrior(name_, location_, 1, 6.0) // strength first
+Archer::Archer(const string& name_, Point location_):Warrior(name_, location_, 1, 6.0) // strength first
 {}
 
 // update implements Soldier behavior

@@ -22,12 +22,12 @@ void Unit::set_parent(shared_ptr<Unit> parent_)
 	parent = parent_;
 }
 
-void Unit::add_component(std::shared_ptr<Unit>)
+void Unit::add_component(shared_ptr<Unit>)
 {
 	throw Error("I'm not a group!");
 }
 
-void Unit::remove_component(std::shared_ptr<Unit>)
+void Unit::remove_component(shared_ptr<Unit>)
 {
 	throw Error("I'm not a group!");
 }

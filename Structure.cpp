@@ -6,7 +6,7 @@
 using std::cout;
 using std::endl;
 using std::string;
-Structure::Structure(const std::string& name_, Point location_, double food_):Sim_object(name_)
+Structure::Structure(const string& name_, Point location_, double food_):Sim_object(name_)
 {
 	location = location_;
 	food = food_;

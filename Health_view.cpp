@@ -5,7 +5,7 @@ using std::endl;
 using std::string;
 
 
-void Health_view::update_health(const std::string& name, double health)
+void Health_view::update_health(const string& name, double health)
 {
 	update_status(name, health);
 }

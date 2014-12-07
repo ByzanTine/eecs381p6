@@ -9,15 +9,16 @@ using std::cout;
 using std::endl;
 using std::shared_ptr;
 using std::dynamic_pointer_cast;
+using std::string;
 
 const int init_attack_strength = 2;
 const double init_attack_range = 2.0;
 
-Zealot::Zealot(const std::string& name_, Point location_):
+Zealot::Zealot(const string& name_, Point location_):
 	Warrior(name_, location_, init_attack_strength, init_attack_range)
 {}
 
-void Zealot::start_attacking(std::shared_ptr<Agent> target_ptr)
+void Zealot::start_attacking(shared_ptr<Agent> target_ptr)
 {
 	if (target_ptr == shared_from_this()) //maybe use get()==this?
 		throw Error(get_name() + ": I cannot attack myself!");

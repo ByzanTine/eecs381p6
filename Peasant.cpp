@@ -10,9 +10,10 @@ using std::cout;
 using std::cerr;
 using std::endl;
 using std::shared_ptr;
+using std::string;
 
 const double max_carry = 35.0;
-Peasant::Peasant(const std::string& name_, Point location_):Agent(name_, location_)
+Peasant::Peasant(const string& name_, Point location_):Agent(name_, location_)
 {
 	food_carrying = 0.;
 	peasant_state = Peasant_state::Not_working;

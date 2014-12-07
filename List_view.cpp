@@ -8,7 +8,7 @@ using std::pair;
 using std::string;
 
 // Remove the name and its location; 
-void List_view::update_remove(const std::string& name)
+void List_view::update_remove(const string& name)
 {
 	if (status.find(name) != status.end())
 		status.erase(name);
@@ -27,7 +27,7 @@ void List_view::draw()
 
 
 
-void List_view::update_status(const std::string& name, double value)
+void List_view::update_status(const string& name, double value)
 {
 	status[name] = value;
 }
