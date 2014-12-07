@@ -6,7 +6,8 @@
 
 using std::shared_ptr;
 using std::make_shared;
-shared_ptr<Structure> create_structure(const std::string& name, const std::string& type, Point location)
+using std::string;
+shared_ptr<Structure> create_structure(const string& name, const string& type, Point location)
 {
 	if (type == "Farm")
 		return make_shared<Farm>(name, location);

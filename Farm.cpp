@@ -6,19 +6,16 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 const double init_food = 50.0;
 const double food_increase_rate = 2.0;
-Farm::Farm (const std::string& name_, Point location_):Structure(name_, location_, init_food)
-{
-	// cout << "Farm " << get_name() << " constructed" << endl;
-}
+Farm::Farm (const string& name_, Point location_):Structure(name_, location_, init_food)
+{}
 
 
 Farm::~Farm()
-{
-	// cout << "Farm " << get_name() << " destructed" << endl;
-}
+{}
 
 
 double Farm::withdraw(double amount_to_get)

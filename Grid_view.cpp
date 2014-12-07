@@ -100,7 +100,7 @@ void Grid_view::print_grid_header()
 	cout << "Display size: " << size << ", scale: " << scale << ", origin: " << origin << endl;
 }
 
-void Grid_view::fill_display_matrix(std::vector< std::vector<std::string> >& display_matrix)
+void Grid_view::fill_display_matrix(vector<vector<string> >& display_matrix)
 {
 	for (const pair<string, Point>& name_loc_pair : name_location_map)
 	{

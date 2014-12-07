@@ -5,15 +5,13 @@
 
 using std::cout;
 using std::endl;
-Sim_object::Sim_object(const std::string& name_)
+using std::string;
+Sim_object::Sim_object(const string& name_)
 {
 	name = name_;
-	// cout << "Sim_object " << name << " constructed" << endl;
 
 }
 
 
 Sim_object::~Sim_object()
-{
-	// cout << "Sim_object " << name << " destructed" << endl;
-}
+{}

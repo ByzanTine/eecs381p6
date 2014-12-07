@@ -4,10 +4,11 @@
 
 using std::cout;
 using std::endl;
+using std::string;
 
 const double deduct_rate = 0.1;
 const double minimum_threshold = 1.0; 
-Town_Hall::Town_Hall (const std::string& name_, Point location_):Structure(name_, location_)
+Town_Hall::Town_Hall (const string& name_, Point location_):Structure(name_, location_)
 {
 	// cout << "Town_Hall " << get_name() << " constructed" << endl;
 }
