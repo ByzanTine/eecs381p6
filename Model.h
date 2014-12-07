@@ -61,11 +61,15 @@ public:
 	void remove_agent(std::shared_ptr<Agent>);
 	// find the nearest agent 
 	std::shared_ptr<Agent> get_nearest_agent_ptr(const std::string& name) const;
-	// tell all objects to describe themselves to the console
+	// return if a group is present in the model
 	bool is_group_present(const std::string& name) const;
+	// add a group, assumes none with the same name
 	void add_group(const std::string& name, std::shared_ptr<Group> group_ptr);
+	// remove a group from the model
 	void remove_group(const std::string& name);
+	// get a group by name, throw error if not found
 	std::shared_ptr<Group> get_group_ptr(const std::string& name) const;
+	// tell all objects to describe themselves to the console
 	void describe() const;
 	// increment the time, and tell all objects to update themselves
 	void update();	
@@ -100,13 +104,6 @@ private:
 	~Model();
 	int time;
 
-	struct name_compare
-	{
-		bool operator() (const std::shared_ptr<Sim_object> lhs, const std::shared_ptr<Sim_object> rhs) const
-		{
-			return lhs->get_name() < rhs->get_name();
-		}
-	};
 	// container of objects
 	using sim_object_pool_t = std::map<std::string, std::shared_ptr<Sim_object>>;
 	sim_object_pool_t sim_object_pool;

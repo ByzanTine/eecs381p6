@@ -32,6 +32,8 @@ const char* invalid_object_name_msg = "Invalid name for new object!";
 int read_int();
 double read_double();
 string read_object_name();
+shared_ptr<Group> get_group_input();
+shared_ptr<Unit> get_unit_input();
 
 Controller::Controller()
 {
@@ -285,34 +287,18 @@ void Controller::command_create_group()
 }
 void Controller::command_add_to_group() 
 {
-	string group_name, unit_name;
-	cin >> group_name;
-	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
-	cin >> unit_name;
-	shared_ptr<Unit> unit_ptr;
-	if (Model::get_instance().is_group_present(unit_name))
-		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
-	else if (Model::get_instance().is_agent_present(unit_name))
-		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
-	else
-		throw (Error("No unit with that name!"));
+	shared_ptr<Group> group_ptr = get_group_input();
+	shared_ptr<Unit> unit_ptr = get_unit_input();
 	group_ptr->add_component(unit_ptr);
 }
 void Controller::command_remove_from_group() 
 {
-	string group_name, unit_name;
-	cin >> group_name;
-	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
-	cin >> unit_name;
-	shared_ptr<Unit> unit_ptr;
-	if (Model::get_instance().is_group_present(unit_name))
-		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
-	else if (Model::get_instance().is_agent_present(unit_name))
-		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
-	else
-		throw (Error("No unit with that name!"));
+	shared_ptr<Group> group_ptr = get_group_input();
+	shared_ptr<Unit> unit_ptr = get_unit_input();
+
 	group_ptr->remove_component(unit_ptr);
 }
+
 void Controller::command_disband_group() 
 {
 	string group_name;
@@ -375,3 +361,24 @@ string read_object_name()
 	return object_name;
 }
 
+shared_ptr<Group> get_group_input()
+{
+	string group_name;
+	cin >> group_name;
+	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
+	return group_ptr;
+}
+
+shared_ptr<Unit> get_unit_input()
+{
+	string unit_name;
+	cin >> unit_name;
+	shared_ptr<Unit> unit_ptr;
+	if (Model::get_instance().is_group_present(unit_name))
+		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
+	else if (Model::get_instance().is_agent_present(unit_name))
+		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
+	else
+		throw (Error("No unit with that name!"));
+	return unit_ptr;
+}
