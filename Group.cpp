@@ -53,7 +53,10 @@ void Group::start_attacking(shared_ptr<Agent> target)
 		{
 			member_ptr->start_attacking(target);
 		}
-		catch (Error& e) {}
+		catch (Error& e)
+		{
+			cout << e.what() << endl;
+		}
 	});
 }
 
