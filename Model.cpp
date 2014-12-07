@@ -67,6 +67,14 @@ Model::Model()
 		{structure_Sh->get_name(), structure_Sh},
 		{structure_P->get_name(), structure_P}
 	};
+	unit_pool = 
+	{
+		{agent_P->get_name(), agent_P},
+		{agent_M->get_name(), agent_M},
+		{agent_Z->get_name(), agent_Z},
+		{agent_B->get_name(), agent_B},
+		{agent_I->get_name(), agent_I}
+	};
 	
 }
 
@@ -134,8 +142,11 @@ bool Model::is_agent_present(const string& name) const
 // add a new agent; assumes none with the same name
 void Model::add_agent(shared_ptr<Agent> agent_ptr)
 {
+	// update three pool together
 	sim_object_pool.emplace(agent_ptr->get_name(), agent_ptr);
 	agent_pool.emplace(agent_ptr->get_name(), agent_ptr);
+	unit_pool.emplace(agent_ptr->get_name(), agent_ptr);
+	// tell the view about the information
 	agent_ptr->broadcast_current_state();
 }
 // will throw Error("Agent not found!") if no agent of that name
@@ -151,7 +162,9 @@ shared_ptr<Agent> Model::get_agent_ptr(const string& name) const
 void Model::remove_agent(shared_ptr<Agent> agent_ptr)
 {
 	sim_object_pool.erase(agent_ptr->get_name());
+	unit_pool.erase(agent_ptr->get_name());
 	agent_pool.erase(agent_ptr->get_name());
+
 }
 
 // Using a range for looks better then min_element with struct
@@ -186,44 +199,39 @@ bool Model::is_group_present(const string& name) const
 void Model::add_group(const string& name, shared_ptr<Group> group_ptr) 
 {
 	group_pool[name] = group_ptr;
+	unit_pool[name] = group_ptr;
 }
 
 void Model::remove_group(const string& name) 
 {
-	auto group_it = group_pool.find(name);
-	if (group_it != group_pool.end()) 
+	auto group_iter = group_pool.find(name);
+	if (group_iter != group_pool.end()) 
 	{
-		group_it->second->set_parent(shared_ptr<Unit>());
-		group_pool.erase(group_it);
+		group_iter->second->set_parent(shared_ptr<Unit>());
+		group_pool.erase(name);
+		unit_pool.erase(name);
 	}
 	
 }
 
 shared_ptr<Group> Model::get_group_ptr(const string& name) const 
 {
-	auto group_it = group_pool.find(name);
-	if (group_it == group_pool.end())
+	auto group_iter = group_pool.find(name);
+	if (group_iter == group_pool.end())
 		throw Error("Group not found!");
-	return group_it->second;
+	return group_iter->second;
 }
 
 bool Model::is_unit_present(const string& name) const
 {
-	if (is_group_present(name))
-		return true;
-	else if (is_agent_present(name))
-		return true;
-	else
-		return false;
+	return unit_pool.find(name) != unit_pool.end();
 }
 	
 shared_ptr<Unit> Model::get_unit_ptr(const string& name) const
 {
-	shared_ptr<Unit> unit_ptr;
-	if (is_group_present(name))
-		return get_group_ptr(name);
-	else if (is_agent_present(name))
-		return get_agent_ptr(name);
+	auto unit_iter = unit_pool.find(name);
+	if (unit_iter != unit_pool.end())
+		return unit_iter->second;
 	else
 		throw Error("No unit with that name!");
 

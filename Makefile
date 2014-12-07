@@ -135,3 +135,9 @@ sample_test:
 	diff testcase/workviolence_out_temp.txt testcase/workviolence_out.txt -s
 	./p6exe < testcase/new_features_in.txt > testcase/new_features_out_temp.txt
 	diff testcase/new_features_out_temp.txt testcase/new_features_out.txt -s
+	./p6exe < demo_new_feature/agri_view_test_in.txt > demo_new_feature/agri_view_test_out_temp.txt
+	diff demo_new_feature/agri_view_test_out_temp.txt demo_new_feature/agri_view_test_out.txt -s
+	./p6exe < demo_new_feature/zealot_test_in.txt > demo_new_feature/zealot_test_out_temp.txt
+	diff demo_new_feature/zealot_test_out.txt demo_new_feature/zealot_test_out_temp.txt -s
+	./p6exe < demo_new_feature/group_test_in.txt > demo_new_feature/group_test_out_temp.txt
+	diff demo_new_feature/group_test_out.txt demo_new_feature/group_test_out_temp.txt -s

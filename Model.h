@@ -40,7 +40,7 @@ public:
 
 	// return the current time
 	int get_time() {return time;}
-	
+
 	// is name already in use for either agent or structure?
     // return true if the name matches the name of an existing agent or structure
 	bool is_name_in_use(const std::string& name) const;
@@ -116,6 +116,7 @@ private:
 	std::map<std::string, std::shared_ptr<Agent> >  agent_pool;
 	std::map<std::string, std::shared_ptr<Structure> > structure_pool;
 	std::map<std::string, std::shared_ptr<Group> > group_pool;
+	std::map<std::string, std::shared_ptr<Unit> > unit_pool;
 	// container of Views
 	std::set<std::shared_ptr<View>> views;
 	
