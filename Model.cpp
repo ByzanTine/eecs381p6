@@ -10,6 +10,7 @@
 #include "Group.h"
 #include "Utility.h"
 #include <functional>
+using std::map;
 using std::bind;
 using std::pair;
 using std::string;
@@ -187,7 +188,7 @@ void Model::add_group(const string& name, shared_ptr<Group> group_ptr)
 	group_pool[name] = group_ptr;
 }
 
-void Model::remove_group(const std::string& name) 
+void Model::remove_group(const string& name) 
 {
 	auto group_it = group_pool.find(name);
 	if (group_it != group_pool.end()) 
@@ -205,7 +206,28 @@ shared_ptr<Group> Model::get_group_ptr(const string& name) const
 		throw Error("Group not found!");
 	return group_it->second;
 }
+
+bool Model::is_unit_present(const string& name) const
+{
+	if (is_group_present(name))
+		return true;
+	else if (is_agent_present(name))
+		return true;
+	else
+		return false;
+}
 	
+shared_ptr<Unit> Model::get_unit_ptr(const string& name) const
+{
+	shared_ptr<Unit> unit_ptr;
+	if (is_group_present(name))
+		return get_group_ptr(name);
+	else if (is_agent_present(name))
+		return get_agent_ptr(name);
+	else
+		throw Error("No unit with that name!");
+
+}
 
 
 
@@ -214,7 +236,7 @@ void Model::describe() const
 {
 	for_each(sim_object_pool.begin(), sim_object_pool.end(), 
 		bind(&Sim_object::describe,
-			bind(&std::map<string, shared_ptr<Sim_object>>::value_type::second, _1))); 
+			bind(&map<string, shared_ptr<Sim_object>>::value_type::second, _1))); 
 }
 // increment the time, and tell all objects to update themselves
 void Model::update()

@@ -38,7 +38,7 @@ shared_ptr<Unit> get_unit_input();
 
 Controller::Controller()
 {
-	agent_commands = 
+	agents_commands = 
 	{
 		{ "move", &Controller::command_move },
 		{ "work", &Controller::command_work },
@@ -87,21 +87,13 @@ void Controller::run()
 				cout << "Done" << endl;
 				break;
 			}
-			shared_ptr<Unit> tmp_unit;
-			if (Model::get_instance().is_agent_present(first_word)) // true if agent exist
+			if (Model::get_instance().is_unit_present(first_word))
 			{
-				tmp_unit = Model::get_instance().get_agent_ptr(first_word); // noexcept
-			}
-			else if (Model::get_instance().is_group_present(first_word))
-			{
-				tmp_unit = Model::get_instance().get_group_ptr(first_word); // noexcept
-			}
-			if (tmp_unit)
-			{
+				shared_ptr<Unit> tmp_unit = Model::get_instance().get_unit_ptr(first_word);
 				string action;
 				cin >> action;
-				if (agent_commands.find(action) != agent_commands.end())
-					(this->*agent_commands[action])(tmp_unit);
+				if (agents_commands.find(action) != agents_commands.end())
+					(this->*agents_commands[action])(tmp_unit);
 				else
 					throw Error("Unrecognized command!");
 				continue;
@@ -381,12 +373,5 @@ shared_ptr<Unit> get_unit_input()
 {
 	string unit_name;
 	cin >> unit_name;
-	shared_ptr<Unit> unit_ptr;
-	if (Model::get_instance().is_group_present(unit_name))
-		unit_ptr = Model::get_instance().get_group_ptr(unit_name);
-	else if (Model::get_instance().is_agent_present(unit_name))
-		unit_ptr = Model::get_instance().get_agent_ptr(unit_name);
-	else
-		throw (Error("No unit with that name!"));
-	return unit_ptr;
+	return Model::get_instance().get_unit_ptr(unit_name);
 }

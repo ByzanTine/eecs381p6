@@ -24,12 +24,13 @@ Notice how only the Standard Library headers need to be included - reduced coupl
 #include <string>
 #include <memory>
 
-#include "Sim_object.h"
+class Sim_object;
 
 class Structure; 
 class Agent;
 class Point;
 class Group;
+class Unit;
 
 class View; // temp
 
@@ -39,7 +40,7 @@ public:
 
 	// return the current time
 	int get_time() {return time;}
-
+	
 	// is name already in use for either agent or structure?
     // return true if the name matches the name of an existing agent or structure
 	bool is_name_in_use(const std::string& name) const;
@@ -69,10 +70,14 @@ public:
 	void remove_group(const std::string& name);
 	// get a group by name, throw error if not found
 	std::shared_ptr<Group> get_group_ptr(const std::string& name) const;
+	// get a unit by name, throw error if not found
+	bool is_unit_present(const std::string& name) const;
+	// return if a unit is in Model 
+	std::shared_ptr<Unit> get_unit_ptr(const std::string& name) const;
 	// tell all objects to describe themselves to the console
 	void describe() const;
 	// increment the time, and tell all objects to update themselves
-	void update();	
+	void update();
 	
 	/* View services */
 	// Attaching a View adds it to the container and causes it to be updated
