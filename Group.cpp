@@ -12,7 +12,7 @@ using std::bind;
 using namespace std::placeholders;
 using std::string;
 
-Group::Group(string name_) : name(name_) {}
+Group::Group(const string& name_) : name(name_) {}
 
 void Group::move_to(Point destination_)
 {

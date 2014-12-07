@@ -7,7 +7,7 @@
 
 class Group : public Unit {
 public:
-	Group(std::string);
+	Group(const std::string&);
 
 	// tell this group to start moving to location destination_
 	void move_to(Point destination_) override;
