@@ -12,7 +12,7 @@ using std::bind;
 using namespace std::placeholders;
 using std::string;
 
-Group::Group(string name_) : name(name_) {}
+Group::Group(const string& name_) : name(name_) {}
 
 void Group::move_to(Point destination_)
 {
@@ -53,7 +53,10 @@ void Group::start_attacking(shared_ptr<Agent> target)
 		{
 			member_ptr->start_attacking(target);
 		}
-		catch (Error& e) {}
+		catch (Error& e)
+		{
+			cout << e.what() << endl;
+		}
 	});
 }
 

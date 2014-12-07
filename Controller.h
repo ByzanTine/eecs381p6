@@ -37,10 +37,10 @@ private:
 	void command_zoom();
 	void command_pan();
 	// Agent commands
-	void command_move(std::shared_ptr<Unit> agent_ptr);
-	void command_work(std::shared_ptr<Unit> agent_ptr);
-	void command_attack(std::shared_ptr<Unit> agent_ptr);
-	void command_stop(std::shared_ptr<Unit> agent_ptr);
+	void command_move(std::shared_ptr<Unit>);
+	void command_work(std::shared_ptr<Unit>);
+	void command_attack(std::shared_ptr<Unit>);
+	void command_stop(std::shared_ptr<Unit>);
 	// General commands
 	void command_go();
 	void command_show();
