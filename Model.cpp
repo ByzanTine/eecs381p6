@@ -211,7 +211,7 @@ void Model::remove_group(const string& name)
 {
 	shared_ptr<Group> group_ptr = get_group_ptr(name);
 	// error is checked 
-	group_ptr->set_parent(shared_ptr<Unit>());
+	group_ptr->set_parent(nullptr);
 	group_pool.erase(name);
 	unit_pool.erase(name);	
 }
