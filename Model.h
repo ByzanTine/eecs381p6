@@ -58,15 +58,16 @@ public:
 	void add_agent(std::shared_ptr<Agent>);
 	// will throw Error("Agent not found!") if no agent of that name
 	std::shared_ptr<Agent> get_agent_ptr(const std::string& name) const;
-	// remove a agent from the pools given the agent_ptr
-	void remove_agent(std::shared_ptr<Agent>);
+	// remove a agent by namefrom the pools given the agent_ptr
+	// throw error if agent does not exist
+	void remove_agent(const std::string& name);
 	// find the nearest agent 
 	std::shared_ptr<Agent> get_nearest_agent_ptr(const std::string& name) const;
 	// return if a group is present in the model
 	bool is_group_present(const std::string& name) const;
 	// add a group, assumes none with the same name
-	void add_group(const std::string& name, std::shared_ptr<Group> group_ptr);
-	// remove a group from the model
+	void add_group(std::shared_ptr<Group> group_ptr);
+	// remove a group from the model, no error check is made
 	void remove_group(const std::string& name);
 	// get a group by name, throw error if not found
 	std::shared_ptr<Group> get_group_ptr(const std::string& name) const;

@@ -134,7 +134,11 @@ void Agent::start_attacking(shared_ptr<Agent>)
 {
 	throw Error(get_name()  + ": Sorry, I can't attack!");
 }
-
+// resolve ambiguity
+const string& Agent::get_name() const
+{
+	return Sim_object::get_name();
+}
 
 // Make this an abstract class by making the constructor protected to prevent direct creation.
 // create with initial health is 5, speed is 5, state is Alive
@@ -158,7 +162,8 @@ void Agent::lose_health(int attack_strength)
 		alive_state = Alive_state::Dead;
 		mov_object.stop_moving();
 		Model::get_instance().notify_gone(get_name());
-		Model::get_instance().remove_agent(dynamic_pointer_cast<Agent>(shared_from_this()));
+		Model::get_instance().remove_agent(get_name());
+
 	}
 	else
 	{

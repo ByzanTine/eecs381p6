@@ -15,6 +15,7 @@ using std::bind;
 using std::pair;
 using std::string;
 using std::shared_ptr;
+using std::dynamic_pointer_cast;
 using namespace std::placeholders;
 using std::for_each;
 
@@ -118,7 +119,7 @@ shared_ptr<Structure> Model::get_nearest_structure_ptr(const string& name) const
 {
 	shared_ptr<Structure> min_distance_structure = nullptr;
 	shared_ptr<Agent> cur_agent = get_agent_ptr(name);
-	for (const pair<string, shared_ptr<Structure>>& content : structure_pool)
+	for (auto& content : structure_pool)
 	{
 		if (!min_distance_structure)
 			min_distance_structure = content.second;
@@ -159,11 +160,15 @@ shared_ptr<Agent> Model::get_agent_ptr(const string& name) const
 		return agent_iter->second;
 }
 
-void Model::remove_agent(shared_ptr<Agent> agent_ptr)
+void Model::remove_agent(const string& name)
 {
-	sim_object_pool.erase(agent_ptr->get_name());
-	unit_pool.erase(agent_ptr->get_name());
-	agent_pool.erase(agent_ptr->get_name());
+	shared_ptr<Agent> agent_ptr = get_agent_ptr(name);
+	// error is checked 
+	sim_object_pool.erase(name);
+	unit_pool.erase(name);
+	agent_pool.erase(name);
+	// remove the existence from group
+	dynamic_pointer_cast<Unit>(agent_ptr)->set_parent(nullptr);
 
 }
 
@@ -172,7 +177,7 @@ shared_ptr<Agent> Model::get_nearest_agent_ptr(const string& name) const
 {
 	shared_ptr<Agent> min_distance_agent = nullptr;
 	shared_ptr<Agent> cur_agent = get_agent_ptr(name);
-	for (const pair<string, shared_ptr<Agent>>& content : agent_pool)
+	for (auto& content : agent_pool)
 	{ 
 		// ignore the same name
 		if (content.first == name)
@@ -196,22 +201,20 @@ bool Model::is_group_present(const string& name) const
 	return group_pool.find(name) != group_pool.end();
 }
 
-void Model::add_group(const string& name, shared_ptr<Group> group_ptr) 
+void Model::add_group(shared_ptr<Group> group_ptr) 
 {
+	string name = group_ptr->get_name();
 	group_pool[name] = group_ptr;
 	unit_pool[name] = group_ptr;
 }
 
 void Model::remove_group(const string& name) 
 {
-	auto group_iter = group_pool.find(name);
-	if (group_iter != group_pool.end()) 
-	{
-		group_iter->second->set_parent(shared_ptr<Unit>());
-		group_pool.erase(name);
-		unit_pool.erase(name);
-	}
-	
+	shared_ptr<Group> group_ptr = get_group_ptr(name);
+	// error is checked 
+	group_ptr->set_parent(shared_ptr<Unit>());
+	group_pool.erase(name);
+	unit_pool.erase(name);	
 }
 
 shared_ptr<Group> Model::get_group_ptr(const string& name) const 
@@ -245,6 +248,9 @@ void Model::describe() const
 	for_each(sim_object_pool.begin(), sim_object_pool.end(), 
 		bind(&Sim_object::describe,
 			bind(&map<string, shared_ptr<Sim_object>>::value_type::second, _1))); 
+	for_each(group_pool.begin(), group_pool.end(), 
+		bind(&Group::describe,
+			bind(&map<string, shared_ptr<Group>>::value_type::second, _1)));
 }
 // increment the time, and tell all objects to update themselves
 void Model::update()

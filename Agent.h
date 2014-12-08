@@ -62,6 +62,9 @@ public:
 	// Throws exception that an Agent cannot attack.
 	void start_attacking(std::shared_ptr<Agent>) override;
 
+	// Accessor of name, resolve ambiguity from Sim_object and Unit
+	const std::string& get_name() const override;
+
 protected:
  	// Make this an abstract class by making the constructor protected to prevent direct creation.
 	// create with initial health is 5, speed is 5, state is Alive

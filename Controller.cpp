@@ -283,7 +283,7 @@ void Controller::command_train()
 void Controller::command_create_group() 
 {
 	string group_name = read_object_name();
-	Model::get_instance().add_group(group_name, make_shared<Group>(group_name));
+	Model::get_instance().add_group(make_shared<Group>(group_name));
 }
 void Controller::command_add_to_group() 
 {
@@ -303,6 +303,7 @@ void Controller::command_disband_group()
 {
 	string group_name;
 	cin >> group_name;
+
 	Model::get_instance().remove_group(group_name);
 }
 
