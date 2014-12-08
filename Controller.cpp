@@ -84,7 +84,7 @@ void Controller::run()
 			if (first_word == "quit")
 			{
 				cout << "Done" << endl;
-				break;
+				return;
 			}
 			if (Model::get_instance().is_unit_present(first_word))
 			{
@@ -95,7 +95,6 @@ void Controller::run()
 					(this->*agents_commands[action])(tmp_unit);
 				else
 					throw Error("Unrecognized command!");
-				continue;
 				
 			}
 			else if (general_commands.find(first_word) != general_commands.end())

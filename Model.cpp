@@ -15,7 +15,6 @@ using std::bind;
 using std::pair;
 using std::string;
 using std::shared_ptr;
-using std::dynamic_pointer_cast;
 using namespace std::placeholders;
 using std::for_each;
 
@@ -168,7 +167,7 @@ void Model::remove_agent(const string& name)
 	unit_pool.erase(name);
 	agent_pool.erase(name);
 	// remove the existence from group
-	dynamic_pointer_cast<Unit>(agent_ptr)->set_parent(nullptr);
+	agent_ptr->set_parent(nullptr);
 
 }
 
