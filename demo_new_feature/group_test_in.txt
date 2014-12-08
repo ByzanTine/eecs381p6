@@ -22,4 +22,12 @@ Bug join BB
 Merry join BB
 BB attack Bug
 BB work Rivendale Shire
+train zealot Zealot 6 10
+Pippin join BB
+status
+go
+go
+go
+go
+status
 quit
