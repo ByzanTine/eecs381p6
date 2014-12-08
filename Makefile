@@ -119,25 +119,9 @@ play: Sim_object.h play.cpp
 	g++ Structure.cpp play.cpp Geometry.cpp -o play
 .PHONY: sample_test
 sample_test:
-	./p6exe < testcase/states_in.txt > testcase/states_out_temp.txt
-	diff testcase/states_out_temp.txt testcase/states_out.txt -s
-	./p6exe < testcase/fight_noshow_in.txt > testcase/fight_noshow_out_temp.txt
-	diff testcase/fight_noshow_out_temp.txt testcase/fight_noshow_out.txt -s
-	./p6exe < testcase/workviolence_noshow_in.txt > testcase/workviolence_noshow_out_temp.txt
-	diff testcase/workviolence_noshow_out_temp.txt testcase/workviolence_noshow_out.txt -s
-	./p6exe < testcase/name_validity_in.txt > testcase/name_validity_out_temp.txt
-	diff testcase/name_validity_out_temp.txt testcase/name_validity_out.txt -s
-	./p6exe < testcase/views_in.txt > testcase/views_out_temp.txt
-	diff testcase/views_out_temp.txt testcase/views_out.txt -s
-	./p6exe < testcase/fight_in.txt > testcase/fight_out_temp.txt
-	diff testcase/fight_out_temp.txt testcase/fight_out.txt -s
-	./p6exe < testcase/workviolence_in.txt > testcase/workviolence_out_temp.txt
-	diff testcase/workviolence_out_temp.txt testcase/workviolence_out.txt -s
-	./p6exe < testcase/new_features_in.txt > testcase/new_features_out_temp.txt
-	diff testcase/new_features_out_temp.txt testcase/new_features_out.txt -s
-	./p6exe < demo_new_feature/agri_view_test_in.txt > demo_new_feature/agri_view_test_out_temp.txt
-	diff demo_new_feature/agri_view_test_out_temp.txt demo_new_feature/agri_view_test_out.txt -s
-	./p6exe < demo_new_feature/zealot_test_in.txt > demo_new_feature/zealot_test_out_temp.txt
-	diff demo_new_feature/zealot_test_out.txt demo_new_feature/zealot_test_out_temp.txt -s
-	./p6exe < demo_new_feature/group_test_in.txt > demo_new_feature/group_test_out_temp.txt
-	diff demo_new_feature/group_test_out.txt demo_new_feature/group_test_out_temp.txt -s
+	./p6exe < demo1_in.txt > demo1_out.tmp
+	diff demo1_out.tmp demo1_out.txt -s
+	./p6exe < demo2_in.txt > demo2_out.tmp
+	diff demo2_out.tmp demo2_out.txt -s
+	./p6exe < demo3_in.txt > demo3_out.tmp
+	diff demo3_out.tmp demo3_out.txt -s
