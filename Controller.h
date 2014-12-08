@@ -41,6 +41,8 @@ private:
 	void command_work(std::shared_ptr<Unit>);
 	void command_attack(std::shared_ptr<Unit>);
 	void command_stop(std::shared_ptr<Unit>);
+	void command_join_group(std::shared_ptr<Unit>);
+	void command_leave_group(std::shared_ptr<Unit>);
 	// General commands
 	void command_go();
 	void command_show();
@@ -49,8 +51,6 @@ private:
 	void command_train();
 	// set of group commands 
 	void command_create_group();
-	void command_add_to_group();
-	void command_remove_from_group();
 	void command_disband_group();
 
 	// Views

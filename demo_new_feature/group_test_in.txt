@@ -1,0 +1,25 @@
+group AA
+group AA
+disband BB	
+group BB
+group CC
+BB join AA
+CC join BB
+AA join CC
+AA join Zug
+Zug join BB
+AA move 10 10
+CC move 1 1
+CC leave BB
+AA join CC
+CC move 1 1
+Bug join CC
+Bug join AA
+CC move 2 2
+disband AA
+CC move 1 5
+Bug join BB
+Merry join BB
+BB attack Bug
+BB work Rivendale Shire
+quit

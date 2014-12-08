@@ -1,0 +1,53 @@
+
+Time 0: Enter command: 
+Time 0: Enter command: Invalid name for new object!
+
+Time 0: Enter command: Group not found!
+
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: No cycle is allowed!
+
+Time 0: Enter command: Group not found!
+
+Time 0: Enter command: 
+Time 0: Enter command: Group: AA move to (10.00, 10.00)
+Group: BB move to (10.00, 10.00)
+Zug: I'm on the way
+Group: CC move to (10.00, 10.00)
+
+Time 0: Enter command: Group: CC move to (1.00, 1.00)
+
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: Group: CC move to (1.00, 1.00)
+Group: AA move to (1.00, 1.00)
+Group: BB move to (1.00, 1.00)
+Zug: I'm on the way
+
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: Group: CC move to (2.00, 2.00)
+Group: AA move to (2.00, 2.00)
+Bug: I'm on the way
+Group: BB move to (2.00, 2.00)
+Zug: I'm on the way
+
+Time 0: Enter command: 
+Time 0: Enter command: Group: CC move to (1.00, 5.00)
+
+Time 0: Enter command: 
+Time 0: Enter command: 
+Time 0: Enter command: Group: BB starting attacking Bug
+Merry: Sorry, I can't attack!
+Zug: Target is out of range!
+Bug: I cannot attack myself!
+
+Time 0: Enter command: Group: BB starg working
+Merry: I'm on the way
+Zug: Sorry, I can't work!
+Bug: Sorry, I can't work!
+
+Time 0: Enter command: Done

@@ -34,7 +34,6 @@ int read_int();
 double read_double();
 string read_object_name();
 shared_ptr<Group> get_group_input();
-shared_ptr<Unit> get_unit_input();
 
 Controller::Controller()
 {
@@ -43,7 +42,9 @@ Controller::Controller()
 		{ "move", &Controller::command_move },
 		{ "work", &Controller::command_work },
 		{ "attack", &Controller::command_attack },
-		{ "stop", &Controller::command_stop }
+		{ "stop", &Controller::command_stop },
+		{ "join", &Controller::command_join_group },
+		{ "leave", &Controller::command_leave_group }
 	};
 	general_commands =
 	{
@@ -56,9 +57,7 @@ Controller::Controller()
 	group_commands = 
 	{
 		{ "group", &Controller::command_create_group },
-		{ "add", &Controller::command_add_to_group },
-		{ "remove", &Controller::command_remove_from_group },
-		{ "disband", &Controller::command_disband_group },
+		{ "disband", &Controller::command_disband_group }
 	};
 	view_commands = 
 	{
@@ -237,6 +236,16 @@ void Controller::command_stop(shared_ptr<Unit> unit_ptr)
 	unit_ptr->stop();
 }
 
+void Controller::command_join_group(shared_ptr<Unit> unit_ptr) 
+{
+	shared_ptr<Group> group_ptr = get_group_input();
+	group_ptr->add_component(unit_ptr);
+}
+void Controller::command_leave_group(shared_ptr<Unit> unit_ptr) 
+{
+	shared_ptr<Group> group_ptr = get_group_input();
+	group_ptr->remove_component(unit_ptr);
+}
 
 void Controller::command_go()
 {
@@ -285,19 +294,7 @@ void Controller::command_create_group()
 	string group_name = read_object_name();
 	Model::get_instance().add_group(make_shared<Group>(group_name));
 }
-void Controller::command_add_to_group() 
-{
-	shared_ptr<Group> group_ptr = get_group_input();
-	shared_ptr<Unit> unit_ptr = get_unit_input();
-	group_ptr->add_component(unit_ptr);
-}
-void Controller::command_remove_from_group() 
-{
-	shared_ptr<Group> group_ptr = get_group_input();
-	shared_ptr<Unit> unit_ptr = get_unit_input();
 
-	group_ptr->remove_component(unit_ptr);
-}
 
 void Controller::command_disband_group() 
 {
@@ -368,11 +365,4 @@ shared_ptr<Group> get_group_input()
 	cin >> group_name;
 	shared_ptr<Group> group_ptr = Model::get_instance().get_group_ptr(group_name);
 	return group_ptr;
-}
-
-shared_ptr<Unit> get_unit_input()
-{
-	string unit_name;
-	cin >> unit_name;
-	return Model::get_instance().get_unit_ptr(unit_name);
 }
